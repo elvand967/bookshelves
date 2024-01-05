@@ -1,0 +1,103 @@
+<!-- D:\Python\myProject\bookshelves\app\templates\base.html -->
+
+{% load static %}
+{% load main_tags %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title|default:"Аудиокниги-скачать торрентом" }}</title>
+    <link type="text/css" href="{% static 'deps/css/base.css' %}" rel="stylesheet"/>
+    {% block head %}{% endblock head %}
+    <link type="text/css" href="{% static 'deps/css/style_iconsfont.css' %}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'deps/images/main.ico' %}" type="image/x-icon"/>
+    <meta name="description" content="Описание вашего сайта">
+    <meta name="keywords" content="ключевые, слова, вашего, сайта">
+    <style>
+        .wrapper {
+            background: #d9c2a1 url("{% static 'deps/images/body_fon.jpg' %}") center center/cover no-repeat fixed;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="container">
+        <header class="header-container">
+            <div class="logo">
+                <a href="/" id="top">
+                    <img class="main-logo" src="{% static 'deps/images/logo.png' %}" alt="logo">
+                </a>
+            </div>
+            <div class="nav_nav">
+                <div class="menu-bar">
+                    <i class="menu-bar-icon fa-solid fa-bars"></i>
+                </div>
+                <nav class="header-nav-left">
+                    <ul>
+                        {% horizontal_menu as menu %}
+                        {% for item in menu %}
+                        <li class="header-link">
+                            <a class="header-link" href="{% url item.url_name %}" title="{{ item.link_hint }}">
+                                {{ item.title }}</a>
+                            {% if not forloop.last %} | {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <nav class="header-nav-right">
+                    <ul>
+                        {% menu_users user as menu %}
+                        {% for item in menu %}
+                        <li class="header-link">
+                            <a class="header-link" href="{% url item.url_name %}" title="{{ item.link_hint }}">
+                                {{ item.title }}</a>
+                            {% if not forloop.last %} | {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="context">
+            {% block content %}{% endblock content %}
+        </div>
+
+        <footer>
+            <div>
+                <span>Виджет 1</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+                    rerum porro praesentium incidunt deserunt dolor unde. Nisi doloribus
+                    consectetur id eveniet alias possimus vel a, quasi ex vitae repellendus
+                    voluptate sint commodi, sed itaque necessitatibus delectus fugiat, ullam
+                    asperiores. Quam, fugiat. Repellendus sequi vel, quisquam facilis, at</p>
+            </div>
+            <div>
+                <span>Виджет 2</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+                    rerum porro praesentium incidunt deserunt dolor unde. Nisi doloribus
+                    consectetur id eveniet alias possimus vel a, quasi ex vitae repellendus
+                    voluptate sint commodi, sed itaque necessitatibus delectus fugiat, ullam
+                    asperiores. Quam, fugiat. Repellendus sequi vel, quisquam facilis, at</p>
+            </div>
+            <div>
+                <span>Виджет 3</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+                    rerum porro praesentium incidunt deserunt dolor unde. Nisi doloribus
+                    consectetur id eveniet alias possimus vel a, quasi ex vitae repellendus
+                    voluptate sint commodi, sed itaque necessitatibus delectus fugiat, ullam
+                    asperiores. Quam, fugiat. Repellendus sequi vel, quisquam facilis, at</p>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="{% static 'deps/js/base.js' %}"></script>
+{% block js %}{% endblock js %}
+</body>
+
+</html>

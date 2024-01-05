@@ -1,0 +1,119 @@
+/* D:\Python\myProject\bookshelves\app\audiobooks\static\audiobooks\css\audiobooks.css */
+
+  /*Цветовая колекция
+:root {
+  --color01: #b47d48;
+  --color02: #5e210f;
+  --color03: #4e4131;
+  --color04: #723527;
+  --color05: #d9c2a1;
+  --color06: #83533d;
+  --color07: #7f706a;
+  --color08: #6e4c19;
+  --color09: #97451a;
+  --color10: #2b1508;
+}
+*/
+
+.context_books{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+/* Файл стилей аккордеона */
+.acor-container {
+    margin: 10px 0;
+}
+.acor-container .acor-body {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    height: 0;
+    color: rgba(0, 0, 0, 0);
+    background-color: var(--color05);
+    line-height: 18px;
+    padding: 0 70px; /* путь выезда подкатегорий */
+    box-sizing: border-box;
+    transition: color 0.5s, padding 0.5s; /* скорость выезда подкатегорий */
+    overflow: hidden;
+  /*  font-family: Verdana, sans-serif; */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 10px 16px rgba(0,0,0,0.2);
+}
+.acor-container .acor-body p {
+    margin: 0 0 10px;
+}
+.acor-container label {
+    cursor: pointer;
+    background-color: var(--color01);
+    display: block;
+    padding: 5px 10px 5px;
+    width: 100%;
+    color: var(--color05);
+    font-weight: 300;
+    box-sizing: border-box;
+    z-index: 100;
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+    margin: 0 0 5px;
+    transition: color .35s;
+}
+.acor-container label:hover {
+    color: #FFF;
+}
+.acor-container input{
+    display: none;
+}
+.acor-container label:before {
+    content: '\276F';
+    float: right;
+}
+.acor-container input:checked + label {
+    background-color: var(--color09);
+    color: #FFF;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.4), 0 28px 30px rgba(0,0,0,0.3);
+}
+.acor-container input:checked + label:before {
+    transition: transform .35s;
+    transform: rotate(90deg);
+}
+.acor-container input:checked + label + .acor-body {
+    height: auto;
+    margin-top: -5px;
+    color: var(--color10);
+    padding: 20px 30px 10px;
+}
+
+.acor-container a {
+    color: var(--color10);  /* Установите цвет подписи ссылок */
+    text-decoration: none;  /* Удалить подчеркивание в ссылках */
+}
+
+/* Наведения для ссылок */
+.acor-container a:hover {
+    color:  var(--color10);  /* Установите цвет наведения для ссылок */
+    /* font-weight: bold;      Сделать жирным */
+    text-decoration: underline;  /* Добавьте подчеркивание при наведении */
+}
+
+/* Установите цвет посещенных ссылок */
+.acor-container a:visited {
+    color:  var(--color10);
+    }
+
+
+/* превью обложек книг */
+.img_preview_l{
+    float: left;
+    max-width: 133px;
+    max-height: 200px;
+    margin: 5px 10px 5px 0;
+}
+
+.img_preview_r{
+    float: right;
+    max-width: 133px;
+    max-height: 200px;
+    margin: 5px 10px 5px 0;
+}

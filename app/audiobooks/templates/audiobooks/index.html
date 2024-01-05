@@ -1,0 +1,34 @@
+<!-- D:\Python\myProject\bookshelves\app\audiobooks\templates\audiobooks\index.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% load audiobooks_tags %}
+
+{% block head %}<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>{% endblock head %}
+
+{% block content %}
+<section  class="context_books"> 
+  <nav>
+  {% my_menu_catsubcat cat_selected=cat_selected subcat_selected=subcat_selected %}
+  </nav>
+  <main> 
+    <article>
+      {% for book in books %}
+        <h2>{{ book.title }}</h2>
+        {% if book.picture %}
+          {% if forloop.counter|divisibleby:2 %}
+            <img class="img_preview_r" src="{{ book.picture.url }}" alt="{{ book.title }}">
+          {% else %}
+            <img class="img_preview_l" src="{{ book.picture.url }}" alt="{{ book.title }}">
+          {% endif %}
+        {% endif %}
+        <p>Жанр: {{ book.book_subcategories.all|join:", " }}</p>
+        <p>Автор: {{ book.authors.all|join:", " }}</p>
+        <p>Читает: {{ book.readers.all|join:", " }}</p>
+        <p>{{book.description|linebreaks|truncatewords:50}}</p>
+        <hr>
+    </article>
+      {% endfor %}
+  </main>
+</section>
+{% endblock content %}

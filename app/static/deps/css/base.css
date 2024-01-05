@@ -1,0 +1,152 @@
+/* D:\Python\myProject\bookshelves\app\static\deps\css\base.css */
+
+/* Reset styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+  /*Цветовая колекция*/
+:root {
+  --color01: #b47d48;
+  --color02: #5e210f;
+  --color03: #4e4131;
+  --color04: #723527;
+  --color05: #d9c2a1;
+  --color06: #83533d;
+  --color07: #7f706a;
+  --color08: #6e4c19;
+  --color09: #97451a;
+  --color10: #2b1508;
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color10);
+  margin: 0; /* Убрать отступы у body */
+  overflow-x: hidden; /* Запретить горизонтальный скролл */
+}
+
+.wrapper {
+  height: 100%; /* Высота блока с параллакс-эффектом в виде 100% от высоты окна браузера */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /* overflow: hidden; Скрыть все, что не помещается в .wrapper */
+}
+
+.container {
+  margin: 0 auto;
+  padding: 150px 0 0;
+  max-width: 1120px;
+  min-height: 100%;
+}
+
+/* header styles */
+.header-container{
+  width: 100%;
+  padding: 10px;
+  background: var(--color02);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  box-sizing: border-box;
+}
+
+.main-logo{
+  width: 60px;
+  padding: 0 20px;
+}
+
+.nav_nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-bar{
+  display: none;
+}
+
+.nav_nav ul {
+  display: flex;
+  margin-right: 30px;
+}
+
+.header-link {
+  margin: 0 7px;
+  text-decoration: none;
+  color: var(--color05);
+  text-transform: uppercase;
+  /* font-weight: bold; */
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.header-link:hover {
+  color:  var(--color01);
+}
+
+.context{
+  background: var(--color05);
+}
+
+footer{
+  width: 100%;
+  padding: 10px;
+  background: var(--color02);
+  color: var(--color05);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,19 @@
+<!-- D:\Python\myProject\bookshelves\app\audiobooks\templates\audiobooks\templatetags\menu_catsubcat.html -->
+<div class="acor-container">
+    {% for category_data in menu_data %}
+    <input type="radio" name="acor"
+           id={{ category_data.category.slug }}
+           {% if category_data.category.slug == cat_selected %}checked="checked"{% endif %}/>
+    <label for={{ category_data.category.slug }}>
+        <a href="{{ category_data.category.url }}">{{ category_data.category.name }}</a></label>
+    {% if category_data.subcategories %}
+
+    <div class="acor-body">
+        {% for subcategory in category_data.subcategories %}
+        <p {% if subcategory.slug == subcat_selected %} style="font-weight: bold;" {% endif %}>
+            <a href="{{ subcategory.url }}">{{ subcategory.name }}</a></p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
