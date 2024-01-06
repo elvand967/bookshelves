@@ -33,7 +33,7 @@ def menu_catsubcat(cat_selected=None, subcat_selected=None):
             category_data['subcategories'].append({
                 'name': subcategory.name,
                 'slug': subcategory.slug,
-                'url': reverse('subcategory_books', args=[category.slug, subcategory.slug])  # assuming you have URLs for subcategories
+                'url': reverse('subcategory_books', args=[category.slug, subcategory.slug])
             })
 
         menu_data.append(category_data)

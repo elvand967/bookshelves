@@ -1,4 +1,4 @@
-# D:\Python\myProject\bookshelves\app\main\urls.py
+# D:\Python\myProject\bookshelves\app\audiobooks\urls.py
 
 from django.conf import settings
 from django.conf.urls.static import static
