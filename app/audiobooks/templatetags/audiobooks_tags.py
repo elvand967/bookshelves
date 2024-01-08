@@ -2,7 +2,7 @@
 
 from django import template
 from django.urls import reverse
-from ..models import ModelCategories, ModelSubcategories
+from ..models import ModelCategories, ModelSubcategories, ModelBooks
 
 register = template.Library()
 
@@ -38,3 +38,11 @@ def menu_catsubcat(cat_selected=None, subcat_selected=None):
 
         menu_data.append(category_data)
     return {'menu_data': menu_data, 'cat_selected': cat_selected, 'subcat_selected': subcat_selected}
+
+
+@register.inclusion_tag('audiobooks/templatetags/book_slider.html', name='book_slider')
+def book_slider():
+    # Получаем 20 случайных объектов ModelBooks с изображениями
+    books_with_images = ModelBooks.objects.exclude(picture=None).order_by('?')[:20]
+    # print(books_with_images)
+    return {'books_with_images': books_with_images}

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'bootstrap4',
+
     'main.apps.MainConfig',
     'audiobooks.apps.AudiobooksConfig',
 ]
