@@ -90,6 +90,8 @@ body {
   padding: 150px 0 0 0;
   max-width: 1120px;
   min-height: 100%;
+
+  /* position: relative; */
 }
 
 /* header styles */
@@ -137,16 +139,16 @@ body {
   color:  var(--color01);
 }
 
-/* Залипание .header-container в top */
+/* Реализуем залипание header. Если прокрутка больше или равна его положения
 .fixed {
   position: fixed;
   top: 0;
   width: 100%;
-  /* Дополнительные стили для зафиксированного header, если необходимо */
   max-width: 1120px;
   background-color: var(--color02);
   z-index: 1000;
 }
+*/
 
 .context{
   background: var(--color05);
@@ -161,4 +163,39 @@ footer{
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   box-sizing: border-box;
+}
+
+.buttons_scroll {
+    display: none;
+    width: 100%;
+    max-width: 1120px;
+    height: 35px;
+    text-align: center;
+    background-color: var(--color02);
+    box-sizing: border-box;
+}
+
+.buttons_position{
+    position: fixed;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.buttons_scroll button {
+  text-align: center;
+  line-height: 50%;
+  background: var(--color02);
+  color: var(--color05);
+  font-size: 38px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-20px); /* Поднимаем кнопку на 20px вверх */
+}
+
+.display_none {
+    display: none;
 }
