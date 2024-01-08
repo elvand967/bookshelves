@@ -33,7 +33,7 @@ def menu_catsubcat(cat_selected=None, subcat_selected=None):
             category_data['subcategories'].append({
                 'name': subcategory.name,
                 'slug': subcategory.slug,
-                'url': reverse('subcategory_books', args=[category.slug, subcategory.slug])
+                'url': reverse('subcategory_books', args=[category.slug, subcategory.slug])  # assuming you have URLs for subcategories
             })
 
         menu_data.append(category_data)
@@ -42,7 +42,7 @@ def menu_catsubcat(cat_selected=None, subcat_selected=None):
 
 @register.inclusion_tag('audiobooks/templatetags/book_slider.html', name='book_slider')
 def book_slider():
-    # Получаем 20 случайных объектов ModelBooks с изображениями
-    books_with_images = ModelBooks.objects.exclude(picture=None).order_by('?')[:20]
+    # Получаем 18 случайных объектов ModelBooks с изображениями
+    books_with_images = ModelBooks.objects.exclude(picture=None).order_by('?')[:12]
     # print(books_with_images)
     return {'books_with_images': books_with_images}

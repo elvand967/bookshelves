@@ -1,11 +1,17 @@
 <!--D:\Python\myProject\bookshelves\app\audiobooks\templates\audiobooks\templatetags\book_slider.html-->
 <!-- 3D Slideshow Section -->
+
 <section id="slideshow">
     <div class="entire-content">
         <div class="content-carrousel">
             {% for book in books_with_images %}
-            <figure class="shadow">
+            <figure class="shadow" data-title="{{ book.title }}" data-author="{{ book.author }}" data-reader="{{ book.reader.name }}" data-url="{{ book.url }}">
                 <img src="{{ book.picture.url }}?w=940&h=650&auto=compress&cs=tinysrgb"/>
+                <figcaption class="book-info">
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author }}</p>
+                    <p>{{ book.reader.name }}</p>
+                </figcaption>
             </figure>
             {% endfor %}
         </div>

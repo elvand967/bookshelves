@@ -5,38 +5,35 @@
 {% load audiobooks_tags %}
 
 {% block head %}
-<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>
-{% endblock head %}
+<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>{% endblock head %}
 
 {% block content %}
 <section class="context_books">
+    <div class="substrate"></div>
     <div class="slider_container">{% book_slider %}</div>
-
-    <div class="sort_container">Контейнер для блока сортировки</div>
-    <aside class="right_aside">кнопка</aside>    
     <aside class="left_aside">
-            <div class="search_container">
-                <form name="search" action="/base.html" method="post" onsubmit="submitForm(event)">
-                    <ul>
-                        <li><span>Поиск <sub><i>(и - или)</i></sub></span></li>
-                        <li><input type="text" name="book" placeholder="Введите название книги" id="firstname"
-                                   oninput="updateSearchButton()"/>
-                        </li>
-                        <li><input type="text" name="cycle" placeholder="Введите название цикла" id="surname"
-                                   oninput="updateSearchButton()"/>
-                        </li>
-                        <li><input type="text" name="author" placeholder="Введите имя автора" id="lastname"
-                                   oninput="updateSearchButton()"/></li>
-                        <li><input type="text" name="reader" placeholder="Введите имя чтеца" id="lastname"
-                                   oninput="updateSearchButton()"/></li>
-                    </ul>
-                    <div class="block_actions">
-                        <button type="reset" name="reset" onclick="updateSearchButton(true)" disabled>Сброс</button>
-                        <button type="submit" name="submit" onclick="updateSearchButton()" disabled>Искать</button>
-                    </div>
-                </form>
-            </div>
-        <nav class="left_sidebar">    
+        <div class="search_container">
+            <form name="search" action="/base.html" method="post" onsubmit="submitForm(event)">
+                <ul>
+                    <li><span>Поиск <sub><i>(и - или)</i></sub></span></li>
+                    <li><input type="text" name="book" placeholder="Введите название книги" id="firstname"
+                               oninput="updateSearchButton()"/>
+                    </li>
+                    <li><input type="text" name="cycle" placeholder="Введите название цикла" id="surname"
+                               oninput="updateSearchButton()"/>
+                    </li>
+                    <li><input type="text" name="author" placeholder="Введите имя автора" id="lastname"
+                               oninput="updateSearchButton()"/></li>
+                    <li><input type="text" name="reader" placeholder="Введите имя чтеца" id="lastname2"
+                               oninput="updateSearchButton()"/></li>
+                </ul>
+                <div class="block_actions">
+                    <button type="reset" name="reset" onclick="updateSearchButton(true)" disabled>Сброс</button>
+                    <button type="submit" name="submit" onclick="updateSearchButton()" disabled>Искать</button>
+                </div>
+            </form>
+        </div>
+        <nav class="left_sidebar">
             {% my_menu_catsubcat cat_selected=cat_selected subcat_selected=subcat_selected %}
         </nav>
         <div class="advertising_container">
@@ -45,10 +42,10 @@
             <p>Рекламный блок</p>
             <p>Рекламный блок</p>
             <p>Рекламный блок</p>
-        </div>    
+        </div>
     </aside>
-
-
+    <div class="sort_container">Контейнер для блока сортировки</div>
+    <div class="right_button">кнопка</div>
     <main class="main_container">
         <article>
             {% for book in books %}
@@ -70,3 +67,4 @@
     </main>
 </section>
 {% endblock content %}
+{% block js %}<script src="{% static 'audiobooks/js/audiobooks.js' %}"></script>{% endblock js %}
