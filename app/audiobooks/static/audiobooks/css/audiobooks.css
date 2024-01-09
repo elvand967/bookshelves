@@ -42,7 +42,7 @@
 .context_books {
     display: grid;
     /* Будет создано 5 колонок */
-    grid-template-columns: 20px minmax(200px, 300px) 1fr 80px 20px;
+    grid-template-columns: 20px minmax(200px, 300px) 1fr 120px 20px;
     /* Будет создано 6 рядов */
     grid-template-rows: 50px 220px auto auto auto 1fr;
     /* Отступы между рядами
@@ -88,13 +88,13 @@
 .sort_container {
     grid-column: 3 / 4;
     grid-row: 3 / 4;
-    background: var(--color08);
+    background: var(--color05);
 }
 
-.right_button {
-    grid-column: 4 / 5;
+.sort_reset {
+    grid-column: 4 / 4;
     grid-row: 3 / 4;
-    background: var(--color07);
+    background: var(--color05);
 }
 
 .main_container {
@@ -387,6 +387,10 @@
 
 /* --- превью книг --- */
 .preview_book {
+    margin: 10px 0;
+}
+
+.preview_book {
     display: grid;
     /* Будет создано 3 колонки */
     grid-template-columns: 124px 1fr 140px;
@@ -409,8 +413,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    color: #FAC78A;
-    background-color: #520D27;
+    height: 50px;
+    color: var(--contrasting11-13);
+    background-color: var(--color21);
 }
 
 .picture_preview {
@@ -438,3 +443,49 @@
 .button_preview {
     grid-area: b;
 }
+
+        
+        
+
+
+
+/* vvv--- Кнопка подробнее превью книги ---vvv */
+.button_preview {
+    border-radius: 6px;
+    color: var(--contrasting11-13);
+    background-color: var(--color02);
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 12px 5px;
+    width: 130px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button_preview span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button_preview span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button_preview:hover span {
+    padding-right: 25px;
+}
+
+.button_preview:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+/* ^^^--- Кнопка подробнее превью книги ---^^^ */
