@@ -55,18 +55,21 @@
             </div>
             <img class="picture_preview" src="{{ book.picture.url }}" alt="{{ book.title }}">
             <div class="description_preview">
+                <p>{{ book.book_subcategories.all|join:", " }}</p>
                 <p>{{book.description|linebreaks|truncatewords:50}}</p>
             </div>
             <div class="information_preview">
-                <p>Жанр: {{ book.book_subcategories.all|join:", " }}</p>
+                <p>год: {{ book.year }}</p>
+                <p>длительность: {{ book.duration }}</p>
+                <p>качество: {{ book.quality }}</p>
+                <p>размер: {{ book.size }}</p>
             </div>
             <div class="ratings_preview">
                 ratings_preview
             </div>
             <button class="button_preview"><span>Подробнее </span></button>
            
-        </article>
-         <hr>
+        </article><hr>
         {% endfor %}
     </main>
 </section>

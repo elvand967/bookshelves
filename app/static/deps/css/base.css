@@ -53,6 +53,7 @@ table {
 
   /*Цветовая колекция*/
 :root {
+  --color_fff: #fff;
   --color01: #b47d48;
   --color02: #5e210f;
   --color03: #4e4131;
@@ -65,17 +66,16 @@ table {
   --color10: #2b1508;
 
 /* --основной цвет 11*/
---color11: #5e210f;
+--color11: #8f4935;
 /* --основной цвет 12*/
---color12: #47241A;
+--color12: #5D2211;
+/* --контрастный цвет к 11-12*/
+--contrasting11: #FAC78A;
 /* --основной цвет 13*/
---color13: #3D1205;
-/* --контрастный цвет к 11-13*/
---contrasting11-13: #FAC78A;
+ --color13: #AF5941;
 /* --основной цвет 14*/
---color14: #AF5941;
-/* --основной цвет 15*/
---color15: #AF705E;
+--color14: #AF705E;
+
 
 /* --дополнительный цвет 21*/
 --color21: #520D27;
@@ -181,8 +181,8 @@ body {
 footer{
   width: 100%;
   padding: 10px;
-  color: var(--contrasting11-13);
-  background-color: var(--color21);
+  color: var(--color05);
+  background-color: var(--color02);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
@@ -195,7 +195,7 @@ footer{
     max-width: 1120px;
     height: 35px;
     text-align: center;
-    background-color: var(--color21);
+    background-color: var(--color02);
     box-sizing: border-box;
 }
 
@@ -209,8 +209,8 @@ footer{
 .buttons_scroll button {
   text-align: center;
   line-height: 50%;
-  color: var(--contrasting11-13);
-  background-color: var(--color21);
+  color: var(--color05);
+  background-color: var(--color02);
   font-size: 38px;
   width: 50px;
   height: 50px;

@@ -42,7 +42,7 @@
 .context_books {
     display: grid;
     /* Будет создано 5 колонок */
-    grid-template-columns: 20px minmax(200px, 300px) 1fr 120px 20px;
+    grid-template-columns: 20px minmax(200px, 300px) 1fr 140px 20px;
     /* Будет создано 6 рядов */
     grid-template-rows: 50px 220px auto auto auto 1fr;
     /* Отступы между рядами
@@ -102,7 +102,7 @@
     grid-row: 4 / -1;
 }
 
-/* Файл стилей аккордеона */
+/* vvv--- Файл стилей аккордеона ---vvv */
 .acor-container {
     margin: 10px 10px 0 10px;
 }
@@ -111,8 +111,8 @@
     width: calc(100% - 40px);
     margin: 0 auto;
     height: 0;
-    color: rgba(0, 0, 0, 0);
-    background-color: var(--color05);
+    color: var(--color05);
+    background-color: var(--color14);
     line-height: 18px;
     padding: 0 70px;
     /* путь выезда подкатегорий */
@@ -131,15 +131,14 @@
 
 .acor-container label {
     cursor: pointer;
-    background-color: var(--color01);
     display: block;
     padding: 5px 10px 5px;
     width: 100%;
     color: var(--color05);
+    background-color: var(--color14);
     font-weight: 300;
     box-sizing: border-box;
     z-index: 100;
-    font-family: Verdana, sans-serif;
     font-size: 18px;
     margin: 0 0 5px;
     transition: color .35s;
@@ -159,8 +158,8 @@
 }
 
 .acor-container input:checked+label {
-    background-color: var(--color09);
-    color: #FFF;
+    color: var(--color05);
+    background-color: var(--color13);
     box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), 0 28px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -172,30 +171,51 @@
 .acor-container input:checked+label+.acor-body {
     height: auto;
     margin-top: -5px;
-    color: var(--color10);
     padding: 20px 30px 10px;
+    background-color:var(--color05);
 }
 
+
+/* Удалим подчеркивание в ссылках */
 .acor-container a {
-    color: var(--color10);
-    /* Установите цвет подписи ссылок */
     text-decoration: none;
-    /* Удалить подчеркивание в ссылках */
 }
 
-/* Наведения для ссылок */
-.acor-container a:hover {
+/* Установите цвет подписи ссылок для категорий*/
+.acor-container label a {
     color: var(--color10);
-    /* Установите цвет наведения для ссылок */
-    /* font-weight: bold;      Сделать жирным */
-    text-decoration: underline;
-    /* Добавьте подчеркивание при наведении */
+}
+
+/* Установите цвет подписи ссылок для подкатегорий*/
+.acor-container p a {
+    color: var(--color10);
 }
 
 /* Установите цвет посещенных ссылок */
 .acor-container a:visited {
     color: var(--color10);
 }
+
+/* Наведения для ссылок */
+.acor-container a:hover {
+    font-weight: bold;      /* Сделать жирным */
+    text-decoration: underline;
+    /* Добавьте подчеркивание при наведении */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* -- 3D Slideshow Section обложек книг -- */
 #slideshow {
@@ -385,7 +405,7 @@
     }
 }
 
-/* --- превью книг --- */
+/* vvv--- превью книг ---vvv */
 .preview_book {
     margin: 10px 0;
 }
@@ -414,8 +434,8 @@
     justify-content: space-between;
     padding: 0 10px;
     height: 50px;
-    color: var(--contrasting11-13);
-    background-color: var(--color21);
+    color: var(--color_fff);
+    background-color: var(--color11);
 }
 
 .picture_preview {
@@ -452,8 +472,8 @@
 /* vvv--- Кнопка подробнее превью книги ---vvv */
 .button_preview {
     border-radius: 6px;
-    color: var(--contrasting11-13);
-    background-color: var(--color02);
+    color: var(--color_fff);
+    background-color: var(--color12);
     border: none;
     text-align: center;
     font-size: 18px;
@@ -489,3 +509,4 @@
     right: 0;
 }
 /* ^^^--- Кнопка подробнее превью книги ---^^^ */
+/* ^^^--- превью книг ---^^^ */
