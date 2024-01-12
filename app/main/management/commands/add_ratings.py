@@ -19,9 +19,9 @@ class Command(BaseCommand):
         add_number_votes = 10
 
         for rating in AverageRating.objects.all():
-            add_sum_plot = random.randrange(67, 77)  # сюжет
-            add_sum_writing_talent = random.randrange(69, 79)  # Писательский талант
-            add_sum_voice_quality = random.randrange(65, 75)  # Качество озвучивания
+            add_sum_plot = random.randrange(570, 670)  # сюжет
+            add_sum_writing_talent = random.randrange(590, 790)  # Писательский талант
+            add_sum_voice_quality = random.randrange(650, 750)  # Качество озвучивания
 
             rating.number_votes = rating.number_votes + add_number_votes
             rating.sum_points_plot = rating.sum_points_plot + add_sum_plot

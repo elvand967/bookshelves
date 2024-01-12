@@ -53,8 +53,10 @@
         <article class="preview_book">
             <div class="header_preview">
                 <h2>{{ book.title }}</h2>
-                <span><h2 class="tooltip" >{{ book.authors.all|join:", " }}<span class="tooltiptext tooltip-bottom">автор</span></h2> //
-                <h2 class="tooltip" >{{ book.readers.all|join:", " }}<span class="tooltiptext tooltip-bottom">читает</span></h2></span>
+                <span><h2 class="tooltip">{{ book.authors.all|join:", " }}<span
+                        class="tooltiptext tooltip-bottom">автор</span></h2> //
+                <h2 class="tooltip">{{ book.readers.all|join:", " }}<span
+                        class="tooltiptext tooltip-bottom">читает</span></h2></span>
             </div>
             <img class="picture_preview" src="{{ book.picture.url }}" alt="{{ book.title }}">
             <div class="description_preview">
@@ -68,7 +70,21 @@
                 <p>размер: {{ book.size }}</p>
             </div>
             <div class="ratings_preview">
-                ratings_preview
+                <div class="rating"><span>Писательский талант:</span>
+                    <span>{{ book.average_rating.writing_talent }}</span>
+                    <div class="scale">
+                    <div class="result" style="width:{{ book.average_rating.writing_talent|floatformat:0 }}%; background-color: #84DE02;"></div>
+                </div> </div>
+                <div class="rating"><span>Сюжет:</span><span>{{ book.average_rating.plot }}</span>
+                    <div class="scale">
+                        <div class="result" style="width:{{ book.average_rating.plot|floatformat:0 }}%; background-color: #4169E1;"></div>
+                    </div>
+                </div>
+                <div class="rating"><span>Качество озвучивания:</span>
+                    <span>{{ book.average_rating.voice_quality }}</span>
+                    <div class="scale">
+                    <div class="result" style="width:{{ book.average_rating.voice_quality|floatformat:0 }}%; background-color: #BF00FF;"></div>
+                </div> </div>
             </div>
             <button class="button_preview"><span>Подробнее </span></button>
         </article>
