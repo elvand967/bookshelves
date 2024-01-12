@@ -45,13 +45,16 @@
         </div>
     </aside>
     <div class="sort_container">Контейнер для блока сортировки</div>
-    <div class="sort_reset"><button class="button_sort_reset"><span>Сброс</span></button></div>
+    <div class="sort_reset">
+        <button class="button_sort_reset"><span>Сброс</span></button>
+    </div>
     <main class="main_container">
-        {% for book in books %}
+        {% for book in page_obj %}
         <article class="preview_book">
             <div class="header_preview">
                 <h2>{{ book.title }}</h2>
-                <h2>{{ book.authors.all|join:", " }} // {{ book.readers.all|join:", " }}</h2>
+                <span><h2 class="tooltip" >{{ book.authors.all|join:", " }}<span class="tooltiptext tooltip-bottom">автор</span></h2> //
+                <h2 class="tooltip" >{{ book.readers.all|join:", " }}<span class="tooltiptext tooltip-bottom">читает</span></h2></span>
             </div>
             <img class="picture_preview" src="{{ book.picture.url }}" alt="{{ book.title }}">
             <div class="description_preview">
@@ -68,10 +71,11 @@
                 ratings_preview
             </div>
             <button class="button_preview"><span>Подробнее </span></button>
-           
-        </article><hr>
+        </article>
+        <hr>
         {% endfor %}
     </main>
 </section>
 {% endblock content %}
-{% block js %}<script src="{% static 'audiobooks/js/audiobooks.js' %}"></script>{% endblock js %}
+{% block js %}
+<script src="{% static 'audiobooks/js/audiobooks.js' %}"></script>{% endblock js %}

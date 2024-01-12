@@ -21,6 +21,8 @@
         .wrapper {
             background: #d9c2a1 url("{% static 'deps/images/body_fon.jpg' %}") center center/cover no-repeat fixed;
         }
+
+
     </style>
 </head>
 
@@ -28,9 +30,10 @@
 <div class="wrapper">
     <div class="container">
         <header class="header-container">
-            <div class="logo">
+            <div class="logo  tooltip">
                 <a href="/" id="top">
-                    <img class="main-logo" src="{% static 'deps/images/logo.png' %}" alt="logo">
+                    <span class="tooltiptext tooltip-bottom">Главная страница</span>
+                    <img class="main-logo" src="{% static 'deps/images/logo.png' %}">
                 </a>
             </div>
             <div class="nav_nav">
@@ -41,9 +44,9 @@
                     <ul>
                         {% horizontal_menu as menu %}
                         {% for item in menu %}
-                        <li class="header-link">
-                            <a class="header-link" href="{% url item.url_name %}" title="{{ item.link_hint }}">
-                                {{ item.title }}</a>
+                        <li class="header-link tooltip">
+                            <a class="header-link" href="{% url item.url_name %}">
+                                {{ item.title }}<span class="tooltiptext tooltip-bottom">{{ item.link_hint }}</span></a>
                             {% if not forloop.last %} | {% endif %}
                         </li>
                         {% endfor %}
@@ -53,9 +56,9 @@
                     <ul>
                         {% menu_users user as menu %}
                         {% for item in menu %}
-                        <li class="header-link">
-                            <a class="header-link" href="{% url item.url_name %}" title="{{ item.link_hint }}">
-                                {{ item.title }}</a>
+                        <li class="header-link tooltip">
+                            <a class="header-link" href="{% url item.url_name %}">
+                                {{ item.title }}<span class="tooltiptext tooltip-bottom">{{ item.link_hint }}</span></a>
                             {% if not forloop.last %} | {% endif %}
                         </li>
                         {% endfor %}
@@ -67,12 +70,13 @@
         <div class="context">
             {% block content %}{% endblock content %}
         </div>
-
-        <div class="buttons_scroll">
-            <button id="button_scroll_down"> <i class="icon-circle-chevron-down"></i></button>
-            <button id="button_scroll_up"> <i class="icon-circle-chevron-up"></i></button>
+        <div>
+            {% pagination page_obj %}
         </div>
-
+        <div class="buttons_scroll">
+            <button id="button_scroll_down"><i class="icon-circle-chevron-down"></i></button>
+            <button id="button_scroll_up"><i class="icon-circle-chevron-up"></i></button>
+        </div>
         <footer>
             <div>
                 <span>Виджет 1</span>

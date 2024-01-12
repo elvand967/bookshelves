@@ -1,4 +1,4 @@
-# D:\Python\myProject\bookshelves\app\main\management\commands\backup_copy_db.py
+ # D:\Python\myProject\bookshelves\app\main\management\commands\backup_copy_db.py
 
 import os
 from datetime import datetime

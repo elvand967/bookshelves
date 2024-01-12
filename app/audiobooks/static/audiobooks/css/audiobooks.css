@@ -172,7 +172,7 @@
     height: auto;
     margin-top: -5px;
     padding: 20px 30px 10px;
-    background-color:var(--color05);
+    background-color: var(--color05);
 }
 
 
@@ -198,7 +198,8 @@
 
 /* Наведения для ссылок */
 .acor-container a:hover {
-    font-weight: bold;      /* Сделать жирным */
+    font-weight: bold;
+    /* Сделать жирным */
     text-decoration: underline;
     /* Добавьте подчеркивание при наведении */
 }
@@ -434,7 +435,7 @@
     justify-content: space-between;
     padding: 0 10px;
     height: 50px;
-    color: var(--color_fff);
+    color: #FFF;
     background-color: var(--color11);
 }
 
@@ -464,8 +465,8 @@
     grid-area: b;
 }
 
-        
-        
+
+
 
 
 
@@ -508,5 +509,8 @@
     opacity: 1;
     right: 0;
 }
+
 /* ^^^--- Кнопка подробнее превью книги ---^^^ */
 /* ^^^--- превью книг ---^^^ */
+
+
