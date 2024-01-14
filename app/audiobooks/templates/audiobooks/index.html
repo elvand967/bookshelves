@@ -71,20 +71,26 @@
             </div>
             <div class="ratings_preview">
                 <div class="rating"><span>Писательский талант:</span>
-                    <span>{{ book.average_rating.writing_talent }}</span>
+                    <span>{{ book.average_rating.talent }}</span>
                     <div class="scale">
-                    <div class="result" style="width:{{ book.average_rating.writing_talent|floatformat:0 }}%; background-color: #84DE02;"></div>
-                </div> </div>
-                <div class="rating"><span>Сюжет:</span><span>{{ book.average_rating.plot }}</span>
+                        <div class="result"
+                             style="width:{{ book.average_rating.talent_ind|floatformat:0 }}%; background-color: #84DE02;"></div>
+                    </div>
+                </div>
+                <div class="rating"><span>Сюжет:</span>
+                    <span>{{ book.average_rating.plot }}</span>
                     <div class="scale">
-                        <div class="result" style="width:{{ book.average_rating.plot|floatformat:0 }}%; background-color: #4169E1;"></div>
+                        <div class="result"
+                             style="width:{{ book.average_rating.plot_ind|floatformat:0 }}%; background-color: #4169E1;"></div>
                     </div>
                 </div>
                 <div class="rating"><span>Качество озвучивания:</span>
-                    <span>{{ book.average_rating.voice_quality }}</span>
+                    <span>{{ book.average_rating.voice }}</span>
                     <div class="scale">
-                    <div class="result" style="width:{{ book.average_rating.voice_quality|floatformat:0 }}%; background-color: #BF00FF;"></div>
-                </div> </div>
+                        <div class="result"
+                             style="width:{{ book.average_rating.voice_ind|floatformat:0 }}%; background-color: #BF00FF;"></div>
+                    </div>
+                </div>
             </div>
             <button class="button_preview"><span>Подробнее </span></button>
         </article>

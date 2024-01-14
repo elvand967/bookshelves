@@ -103,7 +103,7 @@ class Reader(models.Model):
         return f"{self.name}"
 
     def get_absolute_url(self):
-        return reverse("reader", kwargs={"reader_slug": self.slug})
+        return reverse("average_rating", kwargs={"reader_slug": self.slug})
 
     class Meta:
         verbose_name = "Чтец"
