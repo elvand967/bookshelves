@@ -3,9 +3,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load audiobooks_tags %}
+{% load rating_tags %}
 
 {% block head %}
-<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>{% endblock head %}
+<!--Сюда добавим стили пользовательских тегов-->
+<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/menu_catsubcat.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'rating/css/sort_menu.css' %}" rel="stylesheet"/>
+{% endblock head %}
 
 {% block content %}
 <section class="context_books">
@@ -44,9 +49,11 @@
             <p>Рекламный блок</p>
         </div>
     </aside>
-    <div class="sort_container">Контейнер для блока сортировки</div>
+    <div class="sort_container">
+        {% sort_menu cat_selected=cat_selected subcat_selected=subcat_selected %}
+    </div>
     <div class="sort_reset">
-        <button class="button_sort_reset"><span>Сброс</span></button>
+        {% comment %} <button class="button_sort_reset"><span>Сброс</span></button> {% endcomment %}
     </div>
     <main class="main_container">
         {% for book in page_obj %}
@@ -69,29 +76,9 @@
                 <p>качество: {{ book.quality }}</p>
                 <p>размер: {{ book.size }}</p>
             </div>
-            <div class="ratings_preview">
-                <div class="rating"><span>Писательский талант:</span>
-                    <span>{{ book.average_rating.talent }}</span>
-                    <div class="scale">
-                        <div class="result"
-                             style="width:{{ book.average_rating.talent_ind|floatformat:0 }}%; background-color: #84DE02;"></div>
-                    </div>
-                </div>
-                <div class="rating"><span>Сюжет:</span>
-                    <span>{{ book.average_rating.plot }}</span>
-                    <div class="scale">
-                        <div class="result"
-                             style="width:{{ book.average_rating.plot_ind|floatformat:0 }}%; background-color: #4169E1;"></div>
-                    </div>
-                </div>
-                <div class="rating"><span>Качество озвучивания:</span>
-                    <span>{{ book.average_rating.voice }}</span>
-                    <div class="scale">
-                        <div class="result"
-                             style="width:{{ book.average_rating.voice_ind|floatformat:0 }}%; background-color: #BF00FF;"></div>
-                    </div>
-                </div>
-            </div>
+
+            {% show_ratings_preview book_ids=book.id %}
+
             <button class="button_preview"><span>Подробнее </span></button>
         </article>
         <hr>

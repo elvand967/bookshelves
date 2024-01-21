@@ -1,19 +1,88 @@
 /* D:\Python\myProject\bookshelves\app\static\deps\css\base.css */
 
 /* Reset styles */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -23,8 +92,17 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -32,16 +110,20 @@ body {
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
@@ -51,7 +133,7 @@ table {
   border-spacing: 0;
 }
 
-  /*Цветовая колекция*/
+/*Цветовая колекция*/
 :root {
   --color_fff: #fff;
   --color01: #b47d48;
@@ -65,25 +147,25 @@ table {
   --color09: #97451a;
   --color10: #2b1508;
 
-/* --основной цвет 11*/
---color11: #8f4935;
-/* --основной цвет 12*/
---color12: #5D2211;
-/* --контрастный цвет к 11-12*/
---contrasting11: #FAC78A;
-/* --основной цвет 13*/
- --color13: #AF5941;
-/* --основной цвет 14*/
---color14: #AF705E;
+  /* --основной цвет 11*/
+  --color11: #8f4935;
+  /* --основной цвет 12*/
+  --color12: #5D2211;
+  /* --контрастный цвет к 11-12*/
+  --contrasting11: #FAC78A;
+  /* --основной цвет 13*/
+  --color13: #AF5941;
+  /* --основной цвет 14*/
+  --color14: #AF705E;
 
 
-/* --дополнительный цвет 21*/
---color21: #520D27;
-/* --дополнительный цвет 22*/
---color22: #3D1725;
-/* --дополнительный цвет 23*/
---color23: #350416;
-/* --дополнительный цвет 24*/
+  /* --дополнительный цвет 21*/
+  --color21: #520D27;
+  /* --дополнительный цвет 22*/
+  --color22: #3D1725;
+  /* --дополнительный цвет 23*/
+  --color23: #350416;
+  /* --дополнительный цвет 24*/
   --color24: #A83E66;
   /* --дополнительный цвет 25*/
   --color25: #A85B77;
@@ -95,12 +177,15 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--color10);
-  margin: 0; /* Убрать отступы у body */
-  overflow-x: hidden; /* Запретить горизонтальный скролл */
+  margin: 0;
+  /* Убрать отступы у body */
+  overflow-x: hidden;
+  /* Запретить горизонтальный скролл */
 }
 
 .wrapper {
-  height: 100%; /* Высота блока с параллакс-эффектом в виде 100% от высоты окна браузера */
+  height: 100%;
+  /* Высота блока с параллакс-эффектом в виде 100% от высоты окна браузера */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -119,28 +204,32 @@ body {
 }
 
 /* header styles */
-.header-container{
+.header-container {
   width: 100%;
   padding: 10px;
-  background: var(--color02);
+  background: -webkit-gradient(linear, left top, left bottom, from(#5d2211), to(#97461a));
+  background: -webkit-linear-gradient(top, #5d2211, #97461a);
+  background: -moz-linear-gradient(top, #5d2211, #97461a);
+  background: -ms-linear-gradient(top, #5d2211, #97461a);
+  background: -o-linear-gradient(top, #5d2211, #97461a);
   display: grid;
   grid-template-columns: 100px 1fr;
   box-sizing: border-box;
 }
 
-.main-logo{
+.main-logo {
   width: 60px;
   padding: 0 20px;
 }
 
-.nav_nav{
+.nav_nav {
   display: flex;
   height: 60px;
   align-items: center;
   justify-content: space-between;
 }
 
-.menu-bar{
+.menu-bar {
   display: none;
 }
 
@@ -160,7 +249,7 @@ body {
 }
 
 .header-link:hover {
-  color:  var(--color01);
+  color: var(--color01);
 }
 
 /* Реализуем залипание header. Если прокрутка больше или равна его положения
@@ -174,11 +263,11 @@ body {
 }
 */
 
-.context{
+.context {
   background: var(--color05);
 }
 
-footer{
+footer {
   width: 100%;
   padding: 10px;
   color: var(--color05);
@@ -190,20 +279,20 @@ footer{
 }
 
 .buttons_scroll {
-    display: none;
-    width: 100%;
-    max-width: 1120px;
-    height: 35px;
-    text-align: center;
-    background-color: var(--color02);
-    box-sizing: border-box;
+  display: none;
+  width: 100%;
+  max-width: 1120px;
+  height: 35px;
+  text-align: center;
+  background-color: var(--color02);
+  box-sizing: border-box;
 }
 
-.buttons_position{
-    position: fixed;
-    bottom: 0;
-    right: 50%;
-    transform: translateX(50%);
+.buttons_position {
+  position: fixed;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
 }
 
 .buttons_scroll button {
@@ -217,96 +306,97 @@ footer{
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transform: translateY(-20px); /* Поднимаем кнопку на 20px вверх */
+  transform: translateY(-20px);
+  /* Поднимаем кнопку на 20px вверх */
 }
 
 .display_none {
-    display: none;
+  display: none;
 }
 
 
 /* vvv--- Пагинатор ---vvv */
 .paginate {
-    text-align: center;
-    padding: 20px 0 40px 0;
-    background-color: var(--color05);
+  text-align: center;
+  padding: 20px 0 40px 0;
+  background-color: var(--color05);
 }
 
 .paginate ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .paginate li {
-    display: inline-grid;
+  display: inline-grid;
 }
 
 .paginate a {
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px;
-    margin: 1px 2px;
-    padding: 5px 10px;
-    display: inline-block;
-    border-top: 1px solid #fff;
-    text-decoration: none;
-    color: var(--color10);
-    text-shadow: white 0 1px 0;
-    background-color: #f5f5f5;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#eaeaea));
-    background-image: -webkit-linear-gradient(top, #f9f9f9, #eaeaea);
-    background-image: -moz-linear-gradient(top, #f9f9f9, #eaeaea);
-    background-image: -ms-linear-gradient(top, #f9f9f9, #eaeaea);
-    background-image: -o-linear-gradient(top, #f9f9f9, #eaeaea);
-    background-image: linear-gradient(top, #f9f9f9, #eaeaea);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f9f9f9', EndColorStr='#eaeaea');
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px;
+  margin: 1px 2px;
+  padding: 5px 10px;
+  display: inline-block;
+  border-top: 1px solid #fff;
+  text-decoration: none;
+  color: var(--color10);
+  text-shadow: white 0 1px 0;
+  background-color: #f5f5f5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#eaeaea));
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #eaeaea);
+  background-image: -moz-linear-gradient(top, #f9f9f9, #eaeaea);
+  background-image: -ms-linear-gradient(top, #f9f9f9, #eaeaea);
+  background-image: -o-linear-gradient(top, #f9f9f9, #eaeaea);
+  background-image: linear-gradient(top, #f9f9f9, #eaeaea);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f9f9f9', EndColorStr='#eaeaea');
 }
 
 .paginate a:first-child,
 .paginate a.first {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .paginate a:last-child,
 .paginate a.last {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .paginate a:hover,
 .paginate a:focus {
-    border-color: var(--color07);
-    background-color:  var(--color07);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#fafafa));
-    background-image: -webkit-linear-gradient(top, #fefefe, #fafafa);
-    background-image: -moz-linear-gradient(top, #fefefe, #fafafa);
-    background-image: -ms-linear-gradient(top, #fefefe, #fafafa);
-    background-image: -o-linear-gradient(top, #fefefe, #fafafa);
-    background-image: linear-gradient(top, #fefefe, #fafafa);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#fafafa');
+  border-color: var(--color07);
+  background-color: var(--color07);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#fafafa));
+  background-image: -webkit-linear-gradient(top, #fefefe, #fafafa);
+  background-image: -moz-linear-gradient(top, #fefefe, #fafafa);
+  background-image: -ms-linear-gradient(top, #fefefe, #fafafa);
+  background-image: -o-linear-gradient(top, #fefefe, #fafafa);
+  background-image: linear-gradient(top, #fefefe, #fafafa);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#fafafa');
 }
 
 .paginate a.more {
-    box-shadow: 0 0 0 0 transparent;
-    border: 0 none;
-    background: transparent;
-    margin-left: 0;
-    margin-right: 0;
+  box-shadow: 0 0 0 0 transparent;
+  border: 0 none;
+  background: transparent;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .paginate a.active {
-    box-shadow: rgba(0, 0, 0, 0.75) 0 0 0 0 inset;
-    border-color: #505050;
-    color:  #f5f5f5;
-    text-shadow: black 0 1px 0;
-    background-color:  var(--color07);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#5f5f5f), to(#5c5c5c));
-    background-image: -webkit-linear-gradient(top, #5f5f5f, #5c5c5c);
-    background-image: -moz-linear-gradient(top, #5f5f5f, #5c5c5c);
-    background-image: -ms-linear-gradient(top, #5f5f5f, #5c5c5c);
-    background-image: -o-linear-gradient(top, #5f5f5f, #5c5c5c);
-    background-image: linear-gradient(top, #5f5f5f, #5c5c5c);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#5f5f5f', EndColorStr='#5c5c5c');
+  box-shadow: rgba(0, 0, 0, 0.75) 0 0 0 0 inset;
+  border-color: #505050;
+  color: #f5f5f5;
+  text-shadow: black 0 1px 0;
+  background-color: var(--color07);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5f5f5f), to(#5c5c5c));
+  background-image: -webkit-linear-gradient(top, #5f5f5f, #5c5c5c);
+  background-image: -moz-linear-gradient(top, #5f5f5f, #5c5c5c);
+  background-image: -ms-linear-gradient(top, #5f5f5f, #5c5c5c);
+  background-image: -o-linear-gradient(top, #5f5f5f, #5c5c5c);
+  background-image: linear-gradient(top, #5f5f5f, #5c5c5c);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#5f5f5f', EndColorStr='#5c5c5c');
 }
 
 /* ^^^--- Пагинатор ---^^^ */
@@ -314,32 +404,35 @@ footer{
 
 /* Tooltip container */
 .tooltip {
-    position: relative;
-    display: inline-block;
-    /* border-bottom: 1px dotted #ccc; /* Если вам нужны точки под наводимым текстом */
-    color: var(--color05);  /* Цвет текста, в нашем случае "|" */
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted #ccc; /* Если вам нужны точки под наводимым текстом */
+  color: var(--color05);
+  /* Цвет текста, в нашем случае "|" */
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
-    position: absolute;
-    width: minmax(80px, 160px);
-    font-size: 14px;
-    letter-spacing: 0px;  /* убираем интепвал между буквами, наследованный от одителя */
-    text-transform: lowercase;  /* все в нижнем регистре */
-    background-color: var(--color01);
-    color: #FFF;
-    text-align: start;
-    padding: 5px;
-    border-radius: 6px;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s;
+  visibility: hidden;
+  position: absolute;
+  width: minmax(80px, 160px);
+  font-size: 14px;
+  letter-spacing: 0px;
+  /* убираем интепвал между буквами, наследованный от одителя */
+  text-transform: lowercase;
+  /* все в нижнем регистре */
+  background-color: var(--color01);
+  color: #FFF;
+  text-align: start;
+  padding: 5px;
+  border-radius: 6px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 /* подсказка справа */
@@ -349,14 +442,14 @@ footer{
 }
 
 .tooltip-right::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent #555 transparent transparent;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
 }
 
 /* подсказка снизу */
@@ -368,14 +461,14 @@ footer{
 
 /* уголок */
 .tooltip-bottom::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--color01) transparent;
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--color01) transparent;
 }
 
 /* подсказка сверху */
@@ -386,29 +479,30 @@ footer{
 }
 
 .tooltip-top::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
 }
 
 /* подсказка слева */
 .tooltip-left {
   top: -5px;
-  bottom:auto;
+  bottom: auto;
   right: 128%;
 }
+
 .tooltip-left::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent #555;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #555;
 }

@@ -1,0 +1,46 @@
+/* D:\Python\myProject\bookshelves\app\rating\static\rating\css\ratings_preview.css */
+
+.ratings_preview{
+    width: 100%;
+    display: grid;
+    /* Будет создано 1 колонка */
+    grid-template-columns: 1fr;
+    /* Будет создано 3 ряда */
+    grid-template-rows: repeat(3, auto);
+    /* Отступы между рядами
+    row-gap: 8px; */
+    /* Отступы между колонками
+    column-gap: 5px; */
+    box-sizing: border-box;
+}
+
+.rating {
+    height: 20px;
+    display: grid;
+    /* Будет создано 3 колонки */
+    grid-template-columns: minmax(auto, 180px) 30px 1fr;
+    /* Будет создано 1 ряд */
+    grid-template-rows: auto;
+    /* Отступы между рядами
+    row-gap: 50px; */
+    /* Отступы между колонками
+    column-gap: 3px; */
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.scale{
+    height: 16px;
+    width: 100%;
+    background-color: #a9a9a9;
+}
+
+.result {
+    height: 16px;
+    line-height: normal;
+    text-align:right;
+    color: #000;
+    font-size: 14px;
+    padding: 0 10px 0 0;
+}
+

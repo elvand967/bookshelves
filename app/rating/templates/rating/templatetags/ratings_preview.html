@@ -1,0 +1,38 @@
+<!-- D:\Python\myProject\bookshelves\app\rating\templates\rating\templatetags\ratings_preview.html -->
+{% load static %}
+{% block head %}
+<link type="text/css" href="{% static 'rating/css/ratings_preview.css' %}" rel="stylesheet"/>
+{% endblock head %}
+
+<div class="ratings_preview">
+    <div class="rating"><span>Писательский талант:</span>
+        <i class="icon-pen-to-square"></i>
+        <div class="scale">
+            <div class="result"
+                 style="width:{{ talent_ind|floatformat:0 }}%; background-color: #84DE02;">
+                <span>{{ rating_preview.talent }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="rating"><span>Сюжет:</span>
+        <i class="icon-people-robbery"></i>
+        <div class="scale">
+            <div class="result"
+                 style="width:{{ plot_ind|floatformat:0 }}%; background-color: #4169E1;">
+                {{ rating_preview.plot }}
+            </div>
+        </div>
+    </div>
+
+    <div class="rating"><span>Качество озвучивания:</span>
+        <i class="icon-microphone-lines"></i>
+        <div class="scale">
+            <div class="result"
+                 style="width:{{ voice_ind|floatformat:0 }}%; background-color: #BF00FF;">
+                <span>{{ rating_preview.voice }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
