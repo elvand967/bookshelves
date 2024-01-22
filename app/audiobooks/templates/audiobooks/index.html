@@ -50,10 +50,7 @@
         </div>
     </aside>
     <div class="sort_container">
-        {% sort_menu cat_selected=cat_selected subcat_selected=subcat_selected %}
-    </div>
-    <div class="sort_reset">
-        {% comment %} <button class="button_sort_reset"><span>Сброс</span></button> {% endcomment %}
+        {% sort_menu cat_selected=cat_selected subcat_selected=subcat_selected sort_reiting=sort_reiting %}
     </div>
     <main class="main_container">
         {% for book in page_obj %}

@@ -18,7 +18,7 @@
     height: 20px;
     display: grid;
     /* Будет создано 3 колонки */
-    grid-template-columns: minmax(auto, 180px) 30px 1fr;
+    grid-template-columns: 30px minmax(auto, 180px) 1fr;
     /* Будет создано 1 ряд */
     grid-template-rows: auto;
     /* Отступы между рядами

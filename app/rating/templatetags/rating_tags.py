@@ -1,9 +1,12 @@
 # D:\Python\myProject\bookshelves\app\rating\templatetags\rating_tags.py
 
 from django import template
+from django.urls import reverse
+
 from rating.models import AverageRating
 
 register = template.Library()
+
 
 @register.inclusion_tag('rating/templatetags/ratings_preview.html')
 def show_ratings_preview(book_ids):
@@ -27,11 +30,49 @@ def show_ratings_preview(book_ids):
 
 # сортировка по рейтингам
 @register.inclusion_tag('rating/templatetags/sort_menu.html', takes_context=True)
-def sort_menu(context, cat_selected=None, subcat_selected=None):
-    sort_fields = [
-        {'field': 'plot', 'label': 'Сюжет'},
-        {'field': 'talent', 'label': 'Талант'},
-        {'field': 'voice', 'label': 'Голос'},
+def sort_menu(context, cat_selected=None, subcat_selected=None, sort_reiting=None):
+    if cat_selected == 'None':
+        cat_selected = None
+
+    if subcat_selected == 'None':
+        subcat_selected = None
+
+    sort_ratings = [
+        {'rating': 'talent', 'label': 'Писательский талант', 'class_i': 'icon-pen-to-square'},
+        {'rating': 'plot', 'label': 'Сюжет', 'class_i': 'icon-people-robbery'},
+        {'rating': 'voice', 'label': 'Качество озвучивания', 'class_i': 'icon-microphone-lines'},
     ]
 
-    return {'sort_fields': sort_fields, 'cat_selected': cat_selected, 'subcat_selected': subcat_selected}
+    for element in sort_ratings:
+        if sort_reiting is not None:
+            # Активный статус рейтинга
+            if sort_reiting.lstrip('-').lower() == element['rating'].lower():
+                # Определяем направление сортировки
+                # Если sort_reiting начинается с '-'
+                if sort_reiting.startswith('-'):
+                    # У нас активный рейтинг со знаком '-'
+                    element.update({'active_rating': '-1', })
+                else:
+                    element.update({'active_rating': '1', })
+            else:
+                # здесь зафиксируем неактивный рейтинг
+                element.update({'active_rating': '0', })
+        else:
+            # зафиксируем все неактивные рейтинги
+            element.update({'active_rating': '0', })
+
+        # Формируем исходный url для сброса
+        if subcat_selected is not None:
+            element.update({
+                'condition_url': reverse('subcat', args=[subcat_selected])})
+        else:
+            element.update({
+                'condition_url': reverse('cat', args=[cat_selected])})
+
+        # url направлений сортировки
+        element.update({
+            'asc_url': reverse('sorted_index', args=[cat_selected, subcat_selected, element['rating']]),
+            'desc_url': reverse('sorted_index', args=[cat_selected, subcat_selected, f'-{element["rating"]}']),
+        })
+
+    return {'sort_ratings': sort_ratings, 'sort_reiting': sort_reiting}

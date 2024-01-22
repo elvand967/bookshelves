@@ -8,16 +8,19 @@ from audiobooks.models import ModelBooks, ModelSubcategories
 
 
 def index(request, category_slug=None, subcategory_slug=None, sort_reiting=None):
-    if subcategory_slug == 'none':
+    if subcategory_slug == 'None' or subcategory_slug == 'none':
         subcategory_slug = None
+    if sort_reiting == 'None' or sort_reiting == 'none':
+        sort_reiting = None
 
+    base_books = ()
     cat_selected = 'vse_zhanry'
     subcat_selected = None
 
     if sort_reiting is None:
-        if category_slug is None and subcategory_slug is None:
+        if (category_slug is None or category_slug == cat_selected) and subcategory_slug is None:
             # Нет фильтров, выбираем все книги
-            condition = None
+            condition = Q()
 
         elif category_slug is not None and subcategory_slug is None:
             # Выбираем книги заданной категории
@@ -32,6 +35,12 @@ def index(request, category_slug=None, subcategory_slug=None, sort_reiting=None)
             cat_selected = subcategory_info.category.slug
             subcat_selected = subcategory_slug
 
+        elif category_slug is not None and subcategory_slug is not None:
+            # Выбираем книги заданной категории и подкатегории (при отмене сортировки)
+            condition = Q(book_subcategories__category__slug=category_slug) & Q(book_subcategories__slug=subcategory_slug)
+            cat_selected = category_slug
+            subcat_selected = subcategory_slug
+
         # Применяем фильтр
         base_books = ModelBooks.objects.only('id', 'book_subcategories', 'authors', 'readers',
                                                  'average_rating').filter(condition)
@@ -39,7 +48,7 @@ def index(request, category_slug=None, subcategory_slug=None, sort_reiting=None)
     else:
         #  Фильтруем книги по категории и/или подкатегории для дальнейшей сортировки
         if category_slug == 'vse_zhanry':
-            condition = None
+            condition = Q()
 
         else:
             # Используем Q объекты для построения условия
