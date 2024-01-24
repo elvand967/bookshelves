@@ -1,7 +1,9 @@
+/* D:\Python\myProject\bookshelves\app\rating\static\rating\css\sort_menu.css */
+
 /* файл стилей меню сортировки рейтингов */
 
 .sort-menu{
-    z-index: 200;
+    z-index: 30;
 }
 
 .sort-menu ul {
@@ -20,7 +22,7 @@
   text-decoration: none; /*убираем подчеркивание текста ссылок*/
   /*background:#819A32; добавляем фон к пункту меню*/
   color:var(--color05); /*меняем цвет ссылок*/
-  padding:0; /*добавляем отступ*/
+ /* padding:0; добавляем отступ*/
   font-family: arial; /*меняем шрифт*/
   line-height:30px; /*ровняем меню по вертикали*/
   display: block;
@@ -29,13 +31,14 @@
   -o-transition: all 0.3s 0.01s ease;
   -webkit-transition: all 0.3s 0.01s ease;
 }
-.sort-menu a:hover {
-  background-color: var(--color02);/*добавляем эффект при наведении*/
+.sort-menu a:hover {     /*добавляем эффект при наведении*/
+
   color: #FFF;
 }
 .sort-menu li {
   float:left; /*Размещаем список горизонтально для реализации меню*/
   position:relative; /*задаем позицию для позиционирования*/
+  /* width: 200px; /*  Задаем ширину выпадающего меню*/
   /* border-right: 1px solid #677B27; добавляем бордюр справа*/
   padding: 0 10px;
 }
@@ -55,10 +58,10 @@
     /*Делаем скрытую часть видимой*/
     .sort-menu li:hover > ul {
         display:block;
-        /* width: minmax(180px, auto); Задаем ширину выпадающего меню*/
         width: 160px;  /* Задаем ширину выпадающего меню*/
         margin: 0;
         background-color: var(--color04);
+        z-index: 30;
     }
     .sort-menu li:hover > ul > li {
         float:none; /*Убираем горизонтальное позиционирование*/

@@ -15,14 +15,14 @@ def show_ratings_preview(book_ids):
     except AverageRating.DoesNotExist:
         rating_preview = None
 
-    talent_ind = float(rating_preview.talent) * 10 if rating_preview else 0
     plot_ind = float(rating_preview.plot) * 10 if rating_preview else 0
+    talent_ind = float(rating_preview.talent) * 10 if rating_preview else 0
     voice_ind = float(rating_preview.voice) * 10 if rating_preview else 0
 
     ratings = {
         'rating_preview': rating_preview,
-        'talent_ind': talent_ind,
         'plot_ind': plot_ind,
+        'talent_ind': talent_ind,
         'voice_ind': voice_ind,
     }
     return ratings
@@ -38,8 +38,8 @@ def sort_menu(context, cat_selected=None, subcat_selected=None, sort_reiting=Non
         subcat_selected = None
 
     sort_ratings = [
-        {'rating': 'talent', 'label': 'Писательский талант', 'class_i': 'icon-pen-to-square'},
         {'rating': 'plot', 'label': 'Сюжет', 'class_i': 'icon-people-robbery'},
+        {'rating': 'talent', 'label': 'Писательский талант', 'class_i': 'icon-pen-to-square'},
         {'rating': 'voice', 'label': 'Качество озвучивания', 'class_i': 'icon-microphone-lines'},
     ]
 

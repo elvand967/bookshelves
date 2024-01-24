@@ -4,6 +4,7 @@
 {% load static %}
 {% load audiobooks_tags %}
 {% load rating_tags %}
+{% load main_tags %}
 
 {% block head %}
 <!--Сюда добавим стили пользовательских тегов-->
@@ -73,9 +74,7 @@
                 <p>качество: {{ book.quality }}</p>
                 <p>размер: {{ book.size }}</p>
             </div>
-
             {% show_ratings_preview book_ids=book.id %}
-
             <button class="button_preview"><span>Подробнее </span></button>
         </article>
         <hr>

@@ -73,6 +73,12 @@ def custom_pagination(page_obj):
     return {'page_obj': page_obj}
 
 
+
+# @register.inclusion_tag('main/templatetags/pagination.html', name='pagination')
+# def custom_pagination(page_obj):
+#     return {'page_obj': page_obj}
+
+
 # @register.simple_tag
 # def custom_pagination(page_obj, query_params):
 #     paginator = page_obj.paginator

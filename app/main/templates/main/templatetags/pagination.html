@@ -1,8 +1,10 @@
+<!-- D:\Python\myProject\bookshelves\app\main\templates\main\templatetags\pagination.html -->
+
 <div class="paginate">
     <ul>
-        {% if page_obj.number > 3 %}
+        {% if page_obj.number > 6 %}
         <li>
-            <a href="?page={{ page_obj.number|add:-3 }}">...&lang;&lang;&nbsp;</a>
+            <a href="?page={{ page_obj.number|add:-6 }}">...&lang;&lang;&nbsp;</a>
         </li>
         {% endif %}
         {% if page_obj.has_previous %}
@@ -24,9 +26,9 @@
             <a href="?page={{ page_obj.next_page_number }}">&rang;</a>
         </li>
         {% endif %}
-        {% if page_obj.number <= page_obj.paginator.num_pages|add:'-3' %}
+        {% if page_obj.number <= page_obj.paginator.num_pages|add:'-6' %}
         <li>
-            <a href="?page={{ page_obj.number|add:3 }}">&nbsp;&rang;&rang;...</a>
+            <a href="?page={{ page_obj.number|add:6 }}">&nbsp;&rang;&rang;...</a>
         </li>
         {% endif %}
     </ul>

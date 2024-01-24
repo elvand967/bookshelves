@@ -1,0 +1,9 @@
+<!-- D:\Python\myProject\bookshelves\app\audiobooks\templates\audiobooks\templatetags\search_results.html -->
+
+{% for book in books %}
+  <!-- Отображение результатов поиска -->
+  {{ book.title }}
+  <!-- Добавьте другие данные, которые вы хотите отобразить -->
+{% empty %}
+  <p>Ничего не найдено</p>
+{% endfor %}

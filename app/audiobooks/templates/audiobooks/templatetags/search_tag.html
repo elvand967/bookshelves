@@ -1,0 +1,15 @@
+<!-- D:\Python\myProject\bookshelves\app\audiobooks\templates\audiobooks\templatetags\search_tag.html -->
+
+{% load static %}
+
+<style>
+  /* Добавьте стили по вашему усмотрению */
+</style>
+
+<form method="GET" action="{% url 'search_results' %}">
+  <input type="text" name="title" placeholder="Название книги">
+  <input type="text" name="cycle" placeholder="Цикл">
+  <input type="text" name="author" placeholder="Автор">
+  <input type="text" name="reader" placeholder="Чтец">
+  <button type="submit">Поиск</button>
+</form>
