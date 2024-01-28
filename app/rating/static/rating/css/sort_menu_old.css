@@ -1,5 +1,4 @@
 /* D:\Python\myProject\bookshelves\app\rating\static\rating\css\sort_menu.css */
-
 /* файл стилей меню сортировки рейтингов */
 
 .sort-menu{
@@ -38,8 +37,6 @@
 .sort-menu li {
   float:left; /*Размещаем список горизонтально для реализации меню*/
   position:relative; /*задаем позицию для позиционирования*/
-  /* width: 200px; /*  Задаем ширину выпадающего меню*/
-  /* border-right: 1px solid #677B27; добавляем бордюр справа*/
   padding: 0 10px;
 }
 

@@ -2,27 +2,27 @@
 
 <div class="sort-menu">
     <ul>
-        {% for option in sort_ratings %}
-            {% if option.active_rating == '0' %}
-            <li><i class="{{ option.class_i }}">&nbsp;</i>
+        {% for item in sort_ratings %}
+
+            {% if item.active == '0' %}
+                <li><i class="{{ item.class_i }}"></i>
             {% else %}
                 <li class="active_label">
-                {% if option.active_rating == '1' %}
+                {% if item.active == '1' %}
                     <i class="icon-circle-arrow-up"></i>
                 {% else %}
                     <i class="icon-circle-arrow-down"></i>
                 {% endif %}
             {% endif %}
 
-            {{ option.label }}
+            {{ item.label }}
+
             <ul>
-                <li><a href="{{ option.condition_url }}"><i class="icon-circle-xmark"></i> не сортировать</a></li>
-                <li><a href="{{ option.desc_url }}"><i class="icon-circle-arrow-down"></i> по убыванию</a></li>
-                <li><a href="{{ option.asc_url }}"><i class="icon-circle-arrow-up"></i> по возрастанию</a></li>
+                <li><a href="{{ item.condition_url }}"><i class="icon-circle-xmark"></i> не сортировать</a></li>
+                <li><a href="{{ item.desc_url }}"><i class="icon-circle-arrow-down"></i> по убыванию</a></li>
+                <li><a href="{{ item.asc_url }}"><i class="icon-circle-arrow-up"></i> по возрастанию</a></li>
             </ul>
             </li>
         {% endfor %}
     </ul>
 </div>
-
-

@@ -2,14 +2,19 @@
 
 {% load static %}
 
-<style>
-  /* Добавьте стили по вашему усмотрению */
-</style>
-
-<form method="GET" action="{% url 'search_results' %}">
-  <input type="text" name="title" placeholder="Название книги">
-  <input type="text" name="cycle" placeholder="Цикл">
-  <input type="text" name="author" placeholder="Автор">
-  <input type="text" name="reader" placeholder="Чтец">
-  <button type="submit">Поиск</button>
-</form>
+<div class="search_container">
+    <form name="search" method="get" action="{% url 'search_results' %}" onsubmit="submitForm(event)">
+        <label for="search"><i class="icon-magnifying-glass"></i>&nbsp; &nbsp; Поиск:</label>
+        <input type="text" name="q" id="search" value="{{ query }}" placeholder="Введите выражение"
+                       oninput="updateSearchButton()">
+        <div  class="block_button">
+            <button type="reset" name="reset" onclick="updateSearchButton(true)" disabled>
+                    <i class="icon-circle-xmark2"></i> Сброс </button>
+            <button type="submit" name="submit" onclick="updateSearchButton()" disabled>
+                    Искать </button>
+        </div>
+    </form>
+</div>
+{% block js %}
+<script src="{% static 'audiobooks/js/audiobooks.js' %}"></script>
+{% endblock js %}

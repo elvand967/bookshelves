@@ -10,48 +10,53 @@
 <!--Сюда добавим стили пользовательских тегов-->
 <link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>
 <link type="text/css" href="{% static 'audiobooks/css/menu_catsubcat.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/ring_slider_books.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/search_tag.css' %}" rel="stylesheet"/>
 <link type="text/css" href="{% static 'rating/css/sort_menu.css' %}" rel="stylesheet"/>
 {% endblock head %}
 
 {% block content %}
 <section class="context_books">
     <div class="substrate"></div>
-    <div class="slider_container">{% book_slider %}</div>
     <aside class="left_aside">
-        <div class="search_container">
-            <form name="search" action="/base.html" method="post" onsubmit="submitForm(event)">
-                <ul>
-                    <li><span>Поиск <sub><i>(и - или)</i></sub></span></li>
-                    <li><input type="text" name="book" placeholder="Введите название книги" id="firstname"
-                               oninput="updateSearchButton()"/>
-                    </li>
-                    <li><input type="text" name="cycle" placeholder="Введите название цикла" id="surname"
-                               oninput="updateSearchButton()"/>
-                    </li>
-                    <li><input type="text" name="author" placeholder="Введите имя автора" id="lastname"
-                               oninput="updateSearchButton()"/></li>
-                    <li><input type="text" name="reader" placeholder="Введите имя чтеца" id="lastname2"
-                               oninput="updateSearchButton()"/></li>
-                </ul>
-                <div class="block_actions">
-                    <button type="reset" name="reset" onclick="updateSearchButton(true)" disabled>Сброс</button>
-                    <button type="submit" name="submit" onclick="updateSearchButton()" disabled>Искать</button>
-                </div>
-            </form>
-        </div>
+        {% search_tag %}
         <nav class="left_sidebar">
             {% my_menu_catsubcat cat_selected=cat_selected subcat_selected=subcat_selected %}
         </nav>
         <div class="advertising_container">
-            <p>Рекламный блок</p>
-            <p>Рекламный блок</p>
-            <p>Рекламный блок</p>
-            <p>Рекламный блок</p>
-            <p>Рекламный блок</p>
+            <p>Рекламные блоки</p>
         </div>
     </aside>
+
+    <div class="slider_container">{% ring_slider_books %}</div>
+    <div class="bread_crumbs">
+        <h1>
+            <p>категория: {{cat_selected}}</p>
+            <p>жанр: {{subcat_selected}}</p>
+            <p>сортировка: {{active_rating}}</p>
+        </h1>
+    </div>
     <div class="sort_container">
-        {% sort_menu cat_selected=cat_selected subcat_selected=subcat_selected sort_reiting=sort_reiting %}
+        <div class="sort-menu">
+            <ul>
+                {% for item in sort_ratings %}
+                    {% if item.active == 'No' %}
+                            <li><i class="{{ item.class_i }}"></i>
+                    {% elif item.active == 'up' %}
+                        <li class="active_label"> <i class="icon-circle-arrow-up"></i>
+                    {% elif item.active == 'down' %}
+                        <li class="active_label"> <i class="icon-circle-arrow-down"></i>
+                    {% endif %}
+                    {{ item.label }}
+                    <ul>
+                        <li><a href="{{ item.condition_url }}"><i class="icon-circle-xmark"></i> не сортировать</a></li>
+                        <li><a href="{{ item.desc_url }}"><i class="icon-circle-arrow-down"></i> по убыванию</a></li>
+                        <li><a href="{{ item.asc_url }}"><i class="icon-circle-arrow-up"></i> по возрастанию</a></li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <main class="main_container">
         {% for book in page_obj %}
@@ -69,7 +74,6 @@
                 <p>{{book.description|linebreaks|truncatewords:50}}</p>
             </div>
             <div class="information_preview">
-                <p>год: {{ book.year }}</p>
                 <p>длительность: {{ book.duration }}</p>
                 <p>качество: {{ book.quality }}</p>
                 <p>размер: {{ book.size }}</p>
@@ -82,5 +86,4 @@
     </main>
 </section>
 {% endblock content %}
-{% block js %}
-<script src="{% static 'audiobooks/js/audiobooks.js' %}"></script>{% endblock js %}
+

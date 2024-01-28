@@ -68,9 +68,6 @@ def get_users_menu(user):
     return menu
 
 
-@register.inclusion_tag('main/templatetags/pagination.html', name='pagination')
-def custom_pagination(page_obj):
-    return {'page_obj': page_obj}
 
 
 

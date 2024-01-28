@@ -41,10 +41,7 @@ function updateSearchButton(buttonReset = false) {
     var inputs = document.forms['search'].querySelectorAll('input[type="text"]');
     var resetButton = document.forms['search'].querySelector('button[name="reset"]');
     var submitButton = document.forms['search'].querySelector('button[name="submit"]');
-
-    var atLeastOneFilled = Array.from(inputs).some(function (input) {
-        return input.value.trim() !== '';
-    });
+    var atLeastOneFilled = Array.from(inputs).some(input => input.value.trim() !== '');
 
     resetButton.disabled = !atLeastOneFilled;
     submitButton.disabled = !atLeastOneFilled;
@@ -56,44 +53,18 @@ function updateSearchButton(buttonReset = false) {
         resetButton.disabled = true;
         submitButton.disabled = true;
     }
+    // Добавление или удаление класса в зависимости от состояния кнопок
+    if (resetButton.disabled) {
+        resetButton.classList.remove('button_active');
+    } else {
+        resetButton.classList.add('button_active');
+    }
+
+    if (submitButton.disabled) {
+        submitButton.classList.remove('button_active');
+    } else {
+        submitButton.classList.add('button_active');
+    }
+
+
 }
-
-// Функция для второй формы ()
-// Функция form name="ratings", формы `сортировки по рейтингам`
-// Активация/деактивация кнопки сброс
-// в зависимости наличия заполненных полей select.option value="..."
-function updateResetButton(formId) {
-    // Получаем все селекторы внутри указанной формы
-    var form = document.forms[formId];
-    var selectors = form.querySelectorAll('select');
-
-    // Получаем кнопку "Сброс"
-    var resetButton = form.querySelector('button[type="reset"]');
-
-    // Флаг, указывающий, есть ли хотя бы один выбранный селектор
-    var atLeastOneSelected = false;
-
-    // Проходим по всем селекторам
-    selectors.forEach(function (selector) {
-        // Получаем соответствующий label
-        var label = form.querySelector('label[for="' + selector.id + '"]');
-
-        // Проверяем, имеет ли текущий селектор выбранное значение
-        if (selector.value.trim() !== '') {
-            atLeastOneSelected = true;
-            // Устанавливаем цвет для label и селектора при выборе значения
-            label.style.color = '#5E68F6'; // Или любой другой цвет
-            selector.style.color = '#5E68F6';
-        } else {
-            // Устанавливаем цвет по умолчанию для label и селектора при отсутствии выбранного значения
-            label.style.color = '#808080';
-            selector.style.color = '#808080';
-        }
-    });
-
-    // Активируем/деактивируем кнопку "Сброс" в зависимости от наличия выбранных селекторов
-    resetButton.disabled = !atLeastOneSelected;
-}
-
-// Вызываем функцию для инициализации состояния кнопки "Сброс" при загрузке страницы
-updateResetButton('ratings');

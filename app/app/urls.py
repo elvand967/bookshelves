@@ -19,7 +19,6 @@ from django.http import HttpResponseNotFound
 from django.urls import path, include
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('audiobooks.urls')),

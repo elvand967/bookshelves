@@ -1,0 +1,30 @@
+/* Стили блока "Поиск" */
+
+.search_container {
+        justify-content: space-around;
+        font-size: 16px;
+        padding: 10px;
+        margin: 0 auto;
+}
+
+.search_container input {
+        width: 100%;
+        margin: 5px 30px 5px 0;
+}
+
+.block_button {
+        display: flex;
+        justify-content: space-between;
+}
+
+.block_button button{
+        height: 36px;
+        width: 120px;
+        border-radius: 6px;
+}
+
+.button_active{
+        color: #FFF;
+        background: -webkit-gradient(linear, left top, left bottom, from(#97461a), to(#5d2211));
+        /*  transition: background 10.0s ease; /* плавное изменение цвета фона при активации и деактивации класса */
+}

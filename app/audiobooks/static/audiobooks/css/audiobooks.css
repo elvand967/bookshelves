@@ -42,9 +42,9 @@
 .context_books {
     display: grid;
     /* Будет создано 5 колонок */
-    grid-template-columns: 20px minmax(200px, 300px) 1fr 140px 20px;
-    /* Будет создано 6 рядов */
-    grid-template-rows: 50px 220px auto auto auto 1fr;
+    grid-template-columns: 30px minmax(200px, 300px) 1fr 140px 20px;
+    /* Будет создано 4 ряда */
+    grid-template-rows: 270px  auto auto 1fr;
     /* Отступы между рядами
     row-gap: 50px; */
     /* Отступы между колонками
@@ -55,38 +55,15 @@
 /* подложка */
 .substrate {
     grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    grid-row: 1 / 1;
     background: -webkit-gradient(linear, left top, left bottom, from(#97461a), to(#5d2211));
-    background: -webkit-linear-gradient(top, #97461a, #5d2211);
-    background: -moz-linear-gradient(top, #97461a, #5d2211);
-    background: -ms-linear-gradient(top, #97461a, #5d2211);
-    background: -o-linear-gradient(top, #97461a, #5d2211);
-}
-
-/* Контейнер слайдера */
-.slider_container {
-    grid-column: 3 / -1;
-    grid-row: 1 / 3;
-    background: -webkit-gradient(linear, left top, left bottom, from(#97461a), to(#5d2211));
-    background: -webkit-linear-gradient(top, #97461a, #5d2211);
-    background: -moz-linear-gradient(top, #97461a, #5d2211);
-    background: -ms-linear-gradient(top, #97461a, #5d2211);
-    background: -o-linear-gradient(top, #97461a, #5d2211);
 }
 
 .left_aside {
     grid-column: 2;
-    grid-row: 2 / -1;
-}
-
-/* форма поиска */
-.search_container {
-    justify-content: space-around;
-    padding: 20px;
-    height: 250px;
+    grid-row: 1 / -1;
     background: var(--color05);
-    border-radius: 10px;
-    z-index: 10;
+    border-radius: 10px 10px 0 0;
 }
 
 /* рекламный блок */
@@ -94,6 +71,23 @@
     margin: 10px 10px 0 10px;
 }
 
+
+/* Контейнер слайдера */
+.slider_container {
+    grid-column: 3 / -1;
+    grid-row: 1 / 2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#97461a), to(#5d2211));
+}
+
+/* хлебные крошки */
+.bread_crumbs{
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+    background: #FFF;
+    color: #000;
+}
+
+/* блок сортировки */
 .sort_container {
     grid-column: 3 / -1;
     grid-row: 3 / 4;
@@ -105,209 +99,6 @@
     grid-row: 4 / -1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* -- 3D Slideshow Section обложек книг -- */
-#slideshow {
-    margin: 0 auto;
-    /* padding-top: 10px; */
-    overflow-x: hidden;
-    overflow-y: hidden;
-    height: 270px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/*
-.slideshow-title {
-	font-family: 'Allerta Stencil';
-	font-size: 98px;
-	color: #fff;
-	margin: 0 auto;
-	text-align: center;
-	margin-top: 25%;
-	letter-spacing: 3px;
-	font-weight: 300;
-}
-*/
-
-.book-info {
-    position: absolute;
-    font-size: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none;
-    color: #fff;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    /* Черная окантовка */
-    /* text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* Черная окантовка шириной 2px */
-    pointer-events: none;
-    /* Чтобы информацию о книге можно было "проходить сквозь" */
-}
-
-.content-carrousel figure:hover .book-info {
-    display: block;
-}
-
-.sub-heading {
-    padding-top: 10px;
-    font-size: 18px;
-}
-
-.sub-heading-two {
-    font-size: 15px;
-}
-
-.sub-heading-three {
-    font-size: 13px;
-}
-
-.sub-heading-four {
-    font-size: 11px;
-}
-
-.sub-heading-five {
-    font-size: 9px;
-}
-
-.sub-heading-six {
-    font-size: 7px;
-}
-
-.sub-heading-seven {
-    font-size: 5px;
-}
-
-.sub-heading-eight {
-    font-size: 3px;
-}
-
-.sub-heading-nine {
-    font-size: 1px;
-}
-
-.entire-content {
-    margin: auto;
-    width: 90px;
-    height: 170px;
-    perspective: 1000px;
-    position: relative;
-    padding-top: 30px;
-}
-
-.content-carrousel {
-    width: 100%;
-    position: absolute;
-    float: right;
-    animation: rotar 60s infinite linear;
-    transform-style: preserve-3d;
-}
-
-.content-carrousel:hover {
-    animation-play-state: paused;
-    cursor: pointer;
-}
-
-.content-carrousel figure {
-    width: 120px;
-    height: 180px;
-    border: 1px solid #3b444b;
-    overflow: hidden;
-    position: absolute;
-}
-
-/* Каждая фигура вращается на 30 градусов больше предыдущей */
-.content-carrousel figure:nth-child(1) {
-    transform: rotateY(0deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(2) {
-    transform: rotateY(30deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(3) {
-    transform: rotateY(60deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(4) {
-    transform: rotateY(90deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(5) {
-    transform: rotateY(120deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(6) {
-    transform: rotateY(150deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(7) {
-    transform: rotateY(180deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(8) {
-    transform: rotateY(210deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(9) {
-    transform: rotateY(240deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(10) {
-    transform: rotateY(270deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(11) {
-    transform: rotateY(300deg) translateZ(270px);
-}
-
-.content-carrousel figure:nth-child(12) {
-    transform: rotateY(330deg) translateZ(270px);
-}
-
-.shadow {
-    position: absolute;
-    box-shadow: 0px 0px 10px 0px #000;
-    border-radius: 10px;
-}
-
-.content-carrousel img {
-    image-rendering: auto;
-    transition: all 300ms;
-    width: 100%;
-    height: 100%;
-}
-
-.content-carrousel img:hover {
-    transform: scale(1.1);
-    transition: all 300ms;
-}
-
-@keyframes rotar {
-    from {
-        transform: rotateY(0deg);
-    }
-
-    to {
-        transform: rotateY(360deg);
-    }
-}
 
 /* vvv--- превью книг ---vvv */
 .preview_book {
@@ -368,19 +159,11 @@
     grid-area: b;
 }
 
-
-
-
-
 /* vvv--- Кнопка подробнее превью книги ---vvv */
 .button_preview {
     border-radius: 6px;
     color: #FFF;
     background: -webkit-gradient(linear, left top, left bottom, from(#5d2211), to(#97461a));
-    background: -webkit-linear-gradient(top, #5d2211, #97461a);
-    background: -moz-linear-gradient(top, #5d2211, #97461a);
-    background: -ms-linear-gradient(top, #5d2211, #97461a);
-    background: -o-linear-gradient(top, #5d2211, #97461a);
     border: none;
     text-align: center;
     font-size: 18px;
@@ -416,56 +199,73 @@
     right: 0;
 }
 
-/* .button_preview {
-    height: 50px;
-    border-top: 1px solid #b47c48;
-    background: #97461a;
-    background: -webkit-gradient(linear, left top, left bottom, from(#5d2211), to(#97461a));
-    background: -webkit-linear-gradient(top, #5d2211, #97461a);
-    background: -moz-linear-gradient(top, #5d2211, #97461a);
-    background: -ms-linear-gradient(top, #5d2211, #97461a);
-    background: -o-linear-gradient(top, #5d2211, #97461a);
-    padding: 13px 26px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
-    -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-    -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-    box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
-    color: white;
-    font-size: 13px;
-    font-family: Helvetica, Arial, Sans-Serif;
-    text-decoration: none;
-    vertical-align: middle;
-}
-
-.button_preview:hover {
-    border-top-color: #520d27;
-    background: #520d27;
-    color: #ccc;
-}
-
-.button_preview:active {
-    border-top-color: #5d2211;
-    background: #5d2211;
-} */
-
-
 /* ^^^--- Кнопка подробнее превью книги ---^^^ */
 /* ^^^--- превью книг ---^^^ */
 
+/* файл стилей меню сортировки рейтингов */
 
-ul.sort_ul li {
-    display: inline;
-    /* Отображать как строчный элемент */
-    margin-right: 5px;
-    /* Отступ слева */
-    border: 1px solid #000;
-    /* Рамка вокруг текста */
-    padding: 3px;
-    /* Поля вокруг текста */
+.sort-menu{
+    z-index: 30;
 }
+
+.sort-menu ul {
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0 auto; /*убираем отступы*/
+  padding-left: 0; /*убираем отступы*/
+  margin-top:5px; /*делаем отступ сверху*/
+}
+
+.active_label{
+  background-color: var(--color04);/*добавляем эффект при наведении*/
+  color: #FFF;
+}
+
+.sort-menu a {
+  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  /*background:#819A32; добавляем фон к пункту меню*/
+  color:var(--color05); /*меняем цвет ссылок*/
+ /* padding:0; добавляем отступ*/
+  font-family: arial; /*меняем шрифт*/
+  line-height:30px; /*ровняем меню по вертикали*/
+  display: block;
+
+  -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+  -o-transition: all 0.3s 0.01s ease;
+  -webkit-transition: all 0.3s 0.01s ease;
+}
+.sort-menu a:hover {     /*добавляем эффект при наведении*/
+
+  color: #FFF;
+}
+.sort-menu li {
+  float:left; /*Размещаем список горизонтально для реализации меню*/
+  position:relative; /*задаем позицию для позиционирования*/
+  padding: 0 10px;
+}
+
+.sort-menu li:hover {
+  background-color: var(--color04);/*добавляем эффект при наведении*/
+  color: #FFF;
+}
+
+    /*Стили для скрытого выпадающего меню*/
+    .sort-menu li > ul {
+        position:absolute;
+        top:25px;
+        display:none;
+    }
+
+    /*Делаем скрытую часть видимой*/
+    .sort-menu li:hover > ul {
+        display:block;
+        width: 160px;  /* Задаем ширину выпадающего меню*/
+        margin: 0;
+        background-color: var(--color04);
+        z-index: 30;
+    }
+    .sort-menu li:hover > ul > li {
+        float:none; /*Убираем горизонтальное позиционирование*/
+    }
 
 
 

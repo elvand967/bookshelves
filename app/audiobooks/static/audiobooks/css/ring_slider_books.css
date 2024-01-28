@@ -1,0 +1,187 @@
+/* -- 3D Slideshow Section обложек книг -- */
+#slideshow {
+    margin: 0 auto;
+    /* padding-top: 10px; */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 270px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/*
+.slideshow-title {
+	font-family: 'Allerta Stencil';
+	font-size: 98px;
+	color: #fff;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 25%;
+	letter-spacing: 3px;
+	font-weight: 300;
+}
+*/
+
+.book-info {
+    position: absolute;
+    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    /* Черная окантовка */
+    /* text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* Черная окантовка шириной 2px */
+    pointer-events: none;
+    /* Чтобы информацию о книге можно было "проходить сквозь" */
+}
+
+.content-carrousel figure:hover .book-info {
+    display: block;
+}
+
+.sub-heading {
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+.sub-heading-two {
+    font-size: 15px;
+}
+
+.sub-heading-three {
+    font-size: 13px;
+}
+
+.sub-heading-four {
+    font-size: 11px;
+}
+
+.sub-heading-five {
+    font-size: 9px;
+}
+
+.sub-heading-six {
+    font-size: 7px;
+}
+
+.sub-heading-seven {
+    font-size: 5px;
+}
+
+.sub-heading-eight {
+    font-size: 3px;
+}
+
+.sub-heading-nine {
+    font-size: 1px;
+}
+
+.entire-content {
+    margin: auto;
+    width: 90px;
+    height: 170px;
+    perspective: 1000px;
+    position: relative;
+    padding-top: 30px;
+}
+
+.content-carrousel {
+    width: 100%;
+    position: absolute;
+    float: right;
+    animation: rotar 60s infinite linear;
+    transform-style: preserve-3d;
+}
+
+.content-carrousel:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+.content-carrousel figure {
+    width: 120px;
+    height: 180px;
+    border: 1px solid #3b444b;
+    overflow: hidden;
+    position: absolute;
+}
+
+/* Каждая фигура вращается на 30 градусов больше предыдущей */
+.content-carrousel figure:nth-child(1) {
+    transform: rotateY(0deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(2) {
+    transform: rotateY(30deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(3) {
+    transform: rotateY(60deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(4) {
+    transform: rotateY(90deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(5) {
+    transform: rotateY(120deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(6) {
+    transform: rotateY(150deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(7) {
+    transform: rotateY(180deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(8) {
+    transform: rotateY(210deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(9) {
+    transform: rotateY(240deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(10) {
+    transform: rotateY(270deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(11) {
+    transform: rotateY(300deg) translateZ(270px);
+}
+
+.content-carrousel figure:nth-child(12) {
+    transform: rotateY(330deg) translateZ(270px);
+}
+
+.shadow {
+    position: absolute;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-radius: 10px;
+}
+
+.content-carrousel img {
+    image-rendering: auto;
+    transition: all 300ms;
+    width: 100%;
+    height: 100%;
+}
+
+.content-carrousel img:hover {
+    transform: scale(1.1);
+    transition: all 300ms;
+}
+
+@keyframes rotar {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}

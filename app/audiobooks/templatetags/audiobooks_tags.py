@@ -4,9 +4,10 @@ from django import template
 from django.urls import reverse
 from ..models import ModelCategories, ModelSubcategories, ModelBooks
 
-
 register = template.Library()
 
+
+'''Встраиваемый пользовательский тег вертикального меню категорий/подкатегориый'''
 @register.inclusion_tag('audiobooks/templatetags/menu_catsubcat.html', name='my_menu_catsubcat')
 def menu_catsubcat(cat_selected=None, subcat_selected=None):
     categories = ModelCategories.objects.all()
@@ -43,7 +44,8 @@ def menu_catsubcat(cat_selected=None, subcat_selected=None):
     return {'menu_data': menu_data, 'cat_selected': cat_selected, 'subcat_selected': subcat_selected}
 
 
-@register.inclusion_tag('audiobooks/templatetags/book_slider.html', name='book_slider')
+'''Встраиваемый пользовательский тег слайдера-кольца'''
+@register.inclusion_tag('audiobooks/templatetags/ring_slider_books.html', name='ring_slider_books')
 def book_slider():
     # Получаем 12 случайных объектов ModelBooks с изображениями
     books_with_images = ModelBooks.objects.exclude(picture=None).order_by('?')[:12]
@@ -51,6 +53,41 @@ def book_slider():
     return {'books_with_images': books_with_images}
 
 
-@register.inclusion_tag('search_tag.html')
+'''Встраиваемый пользовательский тег пагинатора'''
+@register.inclusion_tag('audiobooks/templatetags/pagination.html', name='pagination')
+def custom_pagination(page_obj):
+    return {'page_obj': page_obj}
+
+
+'''Встраиваемый пользовательский тег блока поиска'''
+@register.inclusion_tag('audiobooks/templatetags/search_tag.html')
 def search_tag():
+    # data = [
+    #     {
+    #         "type": "text",
+    #         "name": "title",
+    #         "placeholder": "название книги",
+    #     },
+    #     {
+    #         "type": "text",
+    #         "name": "cycle",
+    #         "placeholder": "название цикла",
+    #     },
+    #     {
+    #         "type": "text",
+    #         "name": "author",
+    #         "placeholder": "имя и/или фамилию автора",
+    #     },
+    #     {
+    #         "type": "text",
+    #         "name": "reader",
+    #         "placeholder": "имя и/или фамилию чтеца",
+    #     },
+    #     {
+    #         "type": "text",
+    #         "name": "on_all",
+    #         "placeholder": "строку, для общего поиска",
+    #     },
+    # ]
+    # return {'data': data}
     return {}

@@ -1,14 +1,13 @@
 # D:\Python\myProject\bookshelves\app\audiobooks\views.py
 
+
 from django.views.generic import ListView
-from django.shortcuts import render
-# from django.db.models import Case, When, F, Value, IntegerField, Q
 from django.db.models import Q
-
 from audiobooks.models import ModelBooks, ModelSubcategories
+from rating.mixins import SortingMixin
 
-
-class BookListView(ListView):
+'''Превью книг по категориям/подкатегориям + сортировка по критериям'''
+class BookListView(SortingMixin, ListView):
     model = ModelBooks
     template_name = 'audiobooks/index.html'
     paginate_by = 9  # Количество книг на странице
@@ -20,7 +19,7 @@ class BookListView(ListView):
     def get_queryset(self):
         category_slug = self.normalize_none(self.kwargs.get('category_slug'))
         subcategory_slug = self.normalize_none(self.kwargs.get('subcategory_slug'))
-        sort_reiting = self.normalize_none(self.kwargs.get('sort_reiting'))
+        active_rating = self.normalize_none(self.kwargs.get('active_rating'))
 
         if (category_slug is None or category_slug == 'vse_zhanry') and subcategory_slug is None:
             # Нет фильтров, выбираем все книги
@@ -38,30 +37,18 @@ class BookListView(ListView):
             ModelBooks.objects
             .only('id', 'book_subcategories', 'authors', 'readers', 'average_rating')
             .filter(condition)
-            .distinct()  # Когда вызывается .distinct(), Django генерирует SQL-запрос с ключевым словом DISTINCT,
-            # которое удаляет дубликаты из набора результатов.
+            .distinct()
         )
 
-        # Проверка наличия условия сортировки
-        # Используем `average_rating__{sort_reiting}` для обращения к полю связанной модели
-        if sort_reiting:
-            # Определяем направление сортировки
-            if sort_reiting.startswith('-'):
-                # Если sort_reiting начинается с '-', убираем его и добавляем '-' перед полем
-                sort_field = f'-average_rating__{sort_reiting[1:]}'
-            else:
-                # Иначе, добавляем поле напрямую
-                sort_field = f'average_rating__{sort_reiting}'
-
-            # Применяем сортировку
-            base_books = base_books.order_by(sort_field)
+        # Применяем сортировку с использованием миксина
+        base_books = self.apply_sorting(base_books, active_rating)
 
         return base_books
 
     def get_context_data(self, **kwargs):
         category_slug = self.normalize_none(self.kwargs.get('category_slug'))
         subcategory_slug = self.normalize_none(self.kwargs.get('subcategory_slug'))
-        sort_reiting = self.normalize_none(self.kwargs.get('sort_reiting'))
+        active_rating = self.normalize_none(self.kwargs.get('active_rating'))
         context = super().get_context_data(**kwargs)
 
         if subcategory_slug is not None:
@@ -80,26 +67,36 @@ class BookListView(ListView):
 
         context['cat_selected'] = cat_selected
         context['subcat_selected'] = subcat_selected
-        context['sort_reiting'] = sort_reiting
+        context['active_rating'] = active_rating
+
+        # Получаем контекст для меню сортировки с использованием миксина
+        sort_menu_context = self.get_sort_menu_context(cat_selected, subcat_selected, active_rating)
+        context.update(sort_menu_context)
 
         return context
 
 
-def search_results(request):
-    title = request.GET.get('title', '')
-    cycle = request.GET.get('cycle', '')
-    author = request.GET.get('author', '')
-    reader = request.GET.get('reader', '')
+'''Поиск книг по полям: Название; Цикл; Автор; Чтец + общий поиск'''
+class SearchResultsView(ListView):
+    model = ModelBooks
+    template_name = 'audiobooks/index.html'
+    paginate_by = 9
 
-    # Выполните поиск в вашей модели ModelBooks на основе предоставленных параметров
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return ModelBooks.objects.filter(Q(title__icontains=query) |
+                    Q(description__icontains=query) | Q(cycle__name__icontains=query) |
+                    Q(authors__name__icontains=query) | Q(readers__name__icontains=query))
 
-    # Пример:
-    books = ModelBooks.objects.filter(
-        title__icontains=title,
-        cycle__name__icontains=cycle,
-        authors__name__icontains=author,
-        readers__name__icontains=reader
-    )
+        return ModelBooks.objects.all()
 
-    context = {'books': books}
-    return render(request, 'search_results.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q', '')
+        context['title'] = 'Поиск'
+        context['cat_selected'] = 'vse_zhanry',
+        context['subcat_selected'] = None,
+        context['sort_reiting'] = None,
+
+        return context

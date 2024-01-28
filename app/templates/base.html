@@ -21,8 +21,6 @@
         .wrapper {
             background: #d9c2a1 url("{% static 'deps/images/body_fon.jpg' %}") center center/cover no-repeat fixed;
         }
-
-
     </style>
 </head>
 
@@ -70,9 +68,23 @@
         <div class="context">
             {% block content %}{% endblock content %}
         </div>
-        <div>
-            {% pagination page_obj %}
-        </div>
+        <div class="paginate">
+            <span class="step-links" {% if page_obj.paginator.num_pages == 1 %} style = "display: None"  {% endif %}>
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% if query %}&q={{ query }}{% endif %}">&lang;&lang; ...</a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">&lang;</a>
+                {% endif %}
+
+                <span class="current">
+                        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">&rang;</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">... &rang;&rang;</a>
+                {% endif %}
+                </span>
+            </div>
         <div class="buttons_scroll">
             <button id="button_scroll_down"><i class="icon-circle-chevron-down"></i></button>
             <button id="button_scroll_up"><i class="icon-circle-chevron-up"></i></button>
