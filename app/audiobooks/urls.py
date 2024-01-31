@@ -14,7 +14,6 @@ urlpatterns = [
             BookListView.as_view(), name='sorted_index'),
     # Маршрут для поиска
     path('search/', SearchResultsView.as_view(), name='search_results'),
-    # path('search/sort/<slug:search>/<slug:active_rating>/', SearchResultsView.as_view(), name='search_sort'),
 ]
 
 # Добавляем путь для просмотра медиафайлов только в режиме отладки

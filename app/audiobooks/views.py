@@ -1,9 +1,8 @@
 # D:\Python\myProject\bookshelves\app\audiobooks\views.py
-
-
+from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.db.models import Q
-from audiobooks.models import ModelBooks, ModelSubcategories
+from audiobooks.models import ModelBooks, ModelSubcategories, ModelCategories
 from rating.mixins import SortingMixin
 
 '''Превью книг по категориям/подкатегориям + сортировка по критериям'''
@@ -77,6 +76,41 @@ class BookListView(SortingMixin, ListView):
 
 
 '''Поиск книг по полям: Название; Цикл; Автор; Чтец + общий поиск'''
+# class SearchResultsView(ListView):
+#     model = ModelBooks
+#     template_name = 'audiobooks/index.html'
+#     paginate_by = 9
+#
+#     def normalize_none(self, value):
+#         """Преобразуем строку 'None' в None."""
+#         return None if value == 'None' else value
+#
+#     def get_queryset(self):
+#
+#         query = self.request.GET.get('q')
+#         if query:
+#             base_books = (
+#                 ModelBooks.objects
+#                 .filter(Q(title__icontains=query) |
+#                     Q(description__icontains=query) | Q(cycle__name__icontains=query) |
+#                     Q(authors__name__icontains=query) | Q(readers__name__icontains=query))
+#                 .distinct())
+#         else:
+#             base_books = ModelBooks.objects.all()
+#
+#         return base_books
+#
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['query'] = self.request.GET.get('q', '')
+#         context['title'] = 'Поиск'
+#         context['cat_selected'] = 'vse_zhanry',
+#         context['subcat_selected'] = None,
+#         context['sort_reiting'] = None,
+#
+#         return context
+
 class SearchResultsView(ListView):
     model = ModelBooks
     template_name = 'audiobooks/index.html'
@@ -87,20 +121,20 @@ class SearchResultsView(ListView):
         return None if value == 'None' else value
 
     def get_queryset(self):
-
         query = self.request.GET.get('q')
         if query:
             base_books = (
                 ModelBooks.objects
                 .filter(Q(title__icontains=query) |
-                    Q(description__icontains=query) | Q(cycle__name__icontains=query) |
-                    Q(authors__name__icontains=query) | Q(readers__name__icontains=query))
+                        Q(description__icontains=query) | Q(cycle__name__icontains=query) |
+                        Q(authors__name__icontains=query) | Q(readers__name__icontains=query))
                 .distinct())
         else:
             base_books = ModelBooks.objects.all()
 
+        # Сохраняем результаты поиска в атрибуте объекта
+        self.search_results = base_books
         return base_books
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -108,6 +142,7 @@ class SearchResultsView(ListView):
         context['title'] = 'Поиск'
         context['cat_selected'] = 'vse_zhanry',
         context['subcat_selected'] = None,
-        context['sort_reiting'] = None,
-
+        context['sort_reiting'] = None
+        # Используем результаты поиска из атрибута объекта
+        context['search_results_count'] = self.search_results.count() if hasattr(self, 'search_results') else 0
         return context

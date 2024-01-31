@@ -30,13 +30,7 @@
 
     <div class="slider_container">{% ring_slider_books %}</div>
     <div class="bread_crumbs">
-        <h1>
-            {% if subcat_selected %}
-            <h1>Книжная полка "{{subcat_selected}}"</h1>
-            {% elif cat_selected %}
-            <h1>Книжный шкаф "{{cat_selectede}}"</h1>
-            {% endif %}
-        </h1>
+        <h1>{% breadcrumbs cat_selected=cat_selected subcat_selected=subcat_selected search_query=request.GET.q %}</h1>
     </div>
     <div class="sort_container">
         <div class="sort-menu">

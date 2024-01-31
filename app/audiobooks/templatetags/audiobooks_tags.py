@@ -1,5 +1,7 @@
 # D:\Python\myProject\bookshelves\app\audiobooks\templatetags\audiobooks_tags.py
 
+
+from django.shortcuts import get_object_or_404
 from django import template
 from django.urls import reverse
 from ..models import ModelCategories, ModelSubcategories, ModelBooks
@@ -91,3 +93,67 @@ def search_tag():
     # ]
     # return {'data': data}
     return {}
+
+
+# @register.simple_tag
+# def breadcrumbs(cat_selected=None, subcat_selected=None):
+#     if subcat_selected:
+#         subcategory = get_object_or_404(ModelSubcategories, slug=subcat_selected)
+#         return f'Книжная полка "{subcategory.name}"'
+#
+#     elif cat_selected:
+#         if cat_selected == 'vse_zhanry':
+#             return 'Все жанры'
+#         else:
+#             category = get_object_or_404(ModelCategories, slug=cat_selected)
+#             return f'Книжный шкаф "{category.name}"'
+#
+#     return 'Все жанры'  # или любой другой дефолтный текст
+
+
+
+# @register.simple_tag
+# def breadcrumbs(cat_selected=None, subcat_selected=None, search_query=None):
+#     if search_query:
+#         return f'Результат поиска `{search_query}`'
+#
+#     if subcat_selected:
+#         subcategory = get_object_or_404(ModelSubcategories, slug=subcat_selected)
+#         return f'Книжная полка "{subcategory.name}"'
+#
+#     elif cat_selected:
+#         if cat_selected == 'vse_zhanry':
+#             return 'Все жанры'
+#         else:
+#             category = get_object_or_404(ModelCategories, slug=cat_selected)
+#             return f'Книжный шкаф "{category.name}"'
+#
+#     return 'Все жанры'  # или любой другой дефолтный текст
+
+@register.simple_tag
+def breadcrumbs(cat_selected=None, subcat_selected=None, search_query=None, search_results_count=None):
+    if search_query:
+        if search_results_count is not None:
+            if search_results_count == 0:
+                return f'По запросу "{search_query}" нет записей'
+            else:
+                return f'По запросу "{search_query}" найдено {search_results_count} записей'
+        else:
+            return f'Результаты по запросу "{search_query}"'
+
+    elif subcat_selected:
+        subcategory = get_object_or_404(ModelSubcategories, slug=subcat_selected)
+        return f'Книжная полка "{subcategory.name}"'
+
+    elif cat_selected:
+        if cat_selected == 'vse_zhanry':
+            return 'Все жанры'
+        else:
+            category = get_object_or_404(ModelCategories, slug=cat_selected)
+            return f'Книжный шкаф "{category.name}"'
+
+    return 'Все жанры'  # или любой другой дефолтный текст
+
+
+
+
