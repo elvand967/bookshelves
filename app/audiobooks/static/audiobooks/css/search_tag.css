@@ -8,8 +8,9 @@
 }
 
 .search_container input {
-        width: 100%;
-        margin: 5px 30px 5px 0;
+        width: 270px;
+        margin: 5px 35px 5px 0;
+        font-size: 18px;
 }
 
 .block_button {
@@ -20,6 +21,7 @@
 .block_button button{
         height: 36px;
         width: 120px;
+        font-size: 16px;
         border-radius: 6px;
 }
 

@@ -12,7 +12,9 @@ urlpatterns = [
     path('cat/<slug:category_slug>/', BookListView.as_view(), name='cat'),
     re_path(r'^sort_rating/(?P<category_slug>[\w-]+)__(?P<subcategory_slug>[\w-]+)__(?P<active_rating>[\w-]+)/$',
             BookListView.as_view(), name='sorted_index'),
+    # Маршрут для поиска
     path('search/', SearchResultsView.as_view(), name='search_results'),
+    # path('search/sort/<slug:search>/<slug:active_rating>/', SearchResultsView.as_view(), name='search_sort'),
 ]
 
 # Добавляем путь для просмотра медиафайлов только в режиме отладки

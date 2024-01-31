@@ -82,14 +82,25 @@ class SearchResultsView(ListView):
     template_name = 'audiobooks/index.html'
     paginate_by = 9
 
+    def normalize_none(self, value):
+        """Преобразуем строку 'None' в None."""
+        return None if value == 'None' else value
+
     def get_queryset(self):
+
         query = self.request.GET.get('q')
         if query:
-            return ModelBooks.objects.filter(Q(title__icontains=query) |
+            base_books = (
+                ModelBooks.objects
+                .filter(Q(title__icontains=query) |
                     Q(description__icontains=query) | Q(cycle__name__icontains=query) |
                     Q(authors__name__icontains=query) | Q(readers__name__icontains=query))
+                .distinct())
+        else:
+            base_books = ModelBooks.objects.all()
 
-        return ModelBooks.objects.all()
+        return base_books
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

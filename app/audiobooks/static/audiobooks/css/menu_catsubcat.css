@@ -7,7 +7,7 @@
     width: calc(100% - 40px);
     margin: 0 auto;
     height: 0;
-    color: var(--color05);
+    color: #FFF;
     background-color: var(--color14);
     line-height: 18px;
     padding: 0 70px;
@@ -30,8 +30,8 @@
     display: block;
     padding: 5px 10px 5px;
     width: 100%;
-    color: var(--color05);
-    background-color: var(--color14);
+    color: #FFF;
+    background: var(--color_grad33);
     font-weight: 300;
     box-sizing: border-box;
     z-index: 20;
@@ -54,8 +54,8 @@
 }
 
 .acor-container input:checked+label {
-    color: var(--color05);
-    background-color: var(--color13);
+    color: #FFF;
+    background: var(--color_grad32);
     box-shadow: 0 8px 26px rgba(0, 0, 0, 0.4), 0 28px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -79,18 +79,18 @@
 
 /* Установите цвет подписи ссылок для категорий*/
 .acor-container label a {
-    color: var(--color10);
+    color: #FFF;
 }
 
 /* Установите цвет подписи ссылок для подкатегорий*/
 .acor-container p a {
-    color: var(--color10);
+    color: #000;
 }
 
-/* Установите цвет посещенных ссылок */
+/* Установите цвет посещенных ссылок
 .acor-container a:visited {
-    color: var(--color10);
-}
+    color: #FFF;
+} */
 
 /* Наведения для ссылок */
 .acor-container a:hover {
