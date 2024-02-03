@@ -1,0 +1,79 @@
+<!-- D:\Python\myProject\bookshelves\app\audiobooks\static\audiobooks\css\audiobook_detail.css -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% load audiobooks_tags %}
+{% load rating_tags %}
+{% load main_tags %}
+
+{% block head %}
+<!--Сюда добавим стили пользовательских тегов-->
+<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/audiobook_detail.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/menu_catsubcat.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/ring_slider_books.css' %}" rel="stylesheet"/>
+<link type="text/css" href="{% static 'audiobooks/css/search_tag.css' %}" rel="stylesheet"/>
+{% endblock head %}
+
+{% block content %}
+<div class="context">
+    <section class="context_books">
+        <div class="substrate"></div>
+        <aside class="left_aside">
+            {% search_tag %}
+            <nav class="left_sidebar">
+                {% my_menu_catsubcat cat_sel=cat_sel subcat_sel=subcat_sel %}
+            </nav>
+            <div class="advertising_container">
+                <p>Рекламные блоки</p>
+            </div>
+        </aside>
+
+        <div class="slider_container">{% ring_slider_books %}</div>
+
+        <div class="sort_container">
+            <h1>{{ audiobook.title }}</h1>
+        </div>
+
+        <div class="bread_crumbs">
+        <h3>{{ audiobook.title }}</h3>
+        </div>
+
+        <main class="main_container">
+
+    <h2>Цикл: {{ audiobook.cycle.name }} ({{ audiobook.number_in_cycle }})</h2>
+    <div><img src="{{ audiobook.picture.url }}" alt="{{ audiobook.title }}" class="leftimg">
+        <p>
+            {% if audiobook.authors.count == 1 %}
+            автор: {{ audiobook.authors.first }}
+            {% else %}
+            авторы: {{ audiobook.authors.all|join:", " }}
+            {% endif %}
+        </p>
+        <p>
+            {% if audiobook.readers.count == 1 %}
+            читает: {{ audiobook.readers.first }}
+            {% else %}
+            читают: {{ audiobook.readers.all|join:", " }}
+            {% endif %}
+        </p>
+        <p>длительность: {{ audiobook.duration }}</p>
+        <p>качество: {{ audiobook.quality }}</p>
+        <p>размер: {{ audiobook.size }}</p>
+        <p>{{ audiobook.description }}</p>
+    </div>
+    <p>Рейтинг: {{ audiobook.average_rating }}</p>
+
+    <br>
+    <a href="{{ audiobook.torrent.url }}" download>
+        <button type="button">Скачать торрент-файл</button>
+    </a>
+
+        </main>
+    </section>
+
+
+    <!-- Другие поля модели, которые вы хотите отобразить -->
+</div>
+{% endblock content %}
+

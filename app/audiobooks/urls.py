@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from django.urls import path, re_path
-from .views import BookListView, SearchResultsView
+from .views import BookListView, SearchResultsView, AudioBookDetailView
 
 urlpatterns = [
     path('', BookListView.as_view(), name='home'),  # http://127.0.0.1:8000/
@@ -14,6 +14,7 @@ urlpatterns = [
             BookListView.as_view(), name='sorted_index'),
     # Маршрут для поиска
     path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('audiobook/<slug:slug>/', AudioBookDetailView.as_view(), name='audiobook'),
 ]
 
 # Добавляем путь для просмотра медиафайлов только в режиме отладки

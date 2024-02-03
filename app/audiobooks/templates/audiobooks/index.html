@@ -8,79 +8,124 @@
 
 {% block head %}
 <!--Сюда добавим стили пользовательских тегов-->
-<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>
-<link type="text/css" href="{% static 'audiobooks/css/menu_catsubcat.css' %}" rel="stylesheet"/>
-<link type="text/css" href="{% static 'audiobooks/css/ring_slider_books.css' %}" rel="stylesheet"/>
-<link type="text/css" href="{% static 'audiobooks/css/search_tag.css' %}" rel="stylesheet"/>
-{% comment %} <link type="text/css" href="{% static 'rating/css/sort_menu.css' %}" rel="stylesheet"/> {% endcomment %}
+{% comment %} <link type="text/css" href="{% static 'audiobooks/css/audiobooks' %}" rel="stylesheet"/> {% endcomment %}
+<link type="text/css" href="{% static 'audiobooks/css/audiobooks_index.css' %}" rel="stylesheet"/>
+{% comment %} <link type="text/css" href="{% static 'audiobooks/css/menu_catsubcat.css' %}" rel="stylesheet"/> {% endcomment %}
+{% comment %} <link type="text/css" href="{% static 'audiobooks/css/ring_slider_books.css' %}" rel="stylesheet"/> {% endcomment %}
+{% comment %} <link type="text/css" href="{% static 'audiobooks/css/search_tag.css' %}" rel="stylesheet"/> {% endcomment %}
+{% comment %}
+<link type="text/css" href="{% static 'rating/css/sort_menu.css' %}" rel="stylesheet"/>
+{% endcomment %}
 {% endblock head %}
 
 {% block content %}
-<section class="context_books">
-    <div class="substrate"></div>
-    <aside class="left_aside">
-        {% search_tag %}
-        <nav class="left_sidebar">
-            {% my_menu_catsubcat cat_selected=cat_selected subcat_selected=subcat_selected %}
-        </nav>
-        <div class="advertising_container">
-            <p>Рекламные блоки</p>
-        </div>
-    </aside>
+<div class="context">
+    <section class="context_books">
+        <div class="substrate"></div>
+        <aside class="left_aside">
+            {% search_tag %}
+            <nav class="left_sidebar">
+                {% my_menu_catsubcat cat_sel=cat_sel subcat_sel=subcat_sel %}
+            </nav>
+            <div class="advertising_container">
+                <p>Рекламные блоки</p>
+            </div>
+        </aside>
 
-    <div class="slider_container">{% ring_slider_books %}</div>
-    <div class="bread_crumbs">
-        <h1>{% breadcrumbs cat_selected=cat_selected subcat_selected=subcat_selected search_query=request.GET.q %}</h1>
-    </div>
-    <div class="sort_container">
-        <div class="sort-menu">
-            <ul>
-                {% for item in sort_ratings %}
+        <div class="slider_container">{% ring_slider_books %}</div>
+        <div class="bread_crumbs">
+        <h1>{% breadcrumbs cat_sel=cat_sel subcat_sel=subcat_sel search_q=request.GET.q%}</h1>
+        </div>
+        <div class="sort_container">
+            <div class="sort-menu">
+                <ul>
+                    {% for item in sort_ratings %}
                     {% if item.active == 'No' %}
-                            <li><i class="{{ item.class_i }}"></i>
-                    {% elif item.active == 'up' %}
-                        <li class="active_label"> <i class="icon-circle-arrow-up"></i>
-                    {% elif item.active == 'down' %}
-                        <li class="active_label"> <i class="icon-circle-arrow-down"></i>
-                    {% endif %}
-                    {{ item.label }}
-                    <ul>
-                        <li><a href="{{ item.condition_url }}"><i class="icon-circle-xmark"></i> не сортировать</a></li>
-                        <li><a href="{{ item.desc_url }}"><i class="icon-circle-arrow-down"></i> по убыванию</a></li>
-                        <li><a href="{{ item.asc_url }}"><i class="icon-circle-arrow-up"></i> по возрастанию</a></li>
-                    </ul>
-                </li>
-                {% endfor %}
-            </ul>
+                    <li><i class="{{ item.class_i }}" style="color: {{ item.color }};"></i>
+                        {% elif item.active == 'up' %}
+                    <li class="active_label"><i class="icon-circle-arrow-up"></i>
+                        {% elif item.active == 'down' %}
+                    <li class="active_label"><i class="icon-circle-arrow-down"></i>
+                        {% endif %}
+                        {{ item.label }}
+                        <ul>
+                            <li><a href="{{ item.condition_url }}"><i class="icon-circle-xmark"></i> не сортировать</a>
+                            </li>
+                            <li><a href="{{ item.desc_url }}"><i class="icon-circle-arrow-down"></i> по убыванию</a>
+                            </li>
+                            <li><a href="{{ item.asc_url }}"><i class="icon-circle-arrow-up"></i> по возрастанию</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
-    <main class="main_container">
-        {% for book in page_obj %}
-        <article class="preview_book">
-            <div class="header_preview">
-                <h2>{{ book.title }}</h2>
-                <span><h3 class="tooltip">{{ book.authors.all|join:", " }}<span
-                        class="tooltiptext tooltip-bottom">автор</span></h3> //
-                <h3 class="tooltip">{{ book.readers.all|join:", " }}<span
-                        class="tooltiptext tooltip-bottom">читает</span></h3></span>
-            </div>
-            <img class="picture_preview" src="{{ book.picture.url }}" alt="{{ book.title }}">
-            <div class="description_preview">
+        <main class="main_container">
+            {% for book in page_obj %}
+            <article class="preview_book">
+                <div class="header_preview">
+                    <h2>{{ book.title }}</h2>
+                    {% if book.cycle %}
+                    <h3>Цикл: {{ book.cycle.name }} ({{ book.number_in_cycle }})</h3>
+                    {% endif %}
+                </div>
 
-                <p>{{book.description|linebreaks|truncatewords:50}}</p>
-            </div>
-            <div class="information_preview">
-                <p>{{ book.book_subcategories.all|join:", " }}</p>
-                <p>длительность: {{ book.duration }}</p>
-                <p>качество: {{ book.quality }}</p>
-                <p>размер: {{ book.size }}</p>
-            </div>
-            {% show_ratings_preview book_ids=book.id %}
-            <button class="button_preview"><span>Подробнее </span></button>
-        </article>
-        <hr>
-        {% endfor %}
-    </main>
-</section>
+                <div class="description_preview">
+                    <p>
+                        {% if book.authors.count == 1 %}
+                        автор: {{ book.authors.first }}
+                        {% else %}
+                        авторы: {{ book.authors.all|join:", " }}
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if book.readers.count == 1 %}
+                        читает: {{ book.readers.first }}
+                        {% else %}
+                        читают: {{ book.readers.all|join:", " }}
+                        {% endif %}
+                    </p>
+                    <p><img class="picture_preview" src="{{ book.picture.url }}" alt="{{ book.title }}">
+                        {{book.description|linebreaks|truncatewords:50}}</p>
+                </div>
+
+                <div class="information_preview">
+                    <p>{{ book.book_subcategories.all|join:", " }}</p>
+                    <p>длительность: {{ book.duration }}</p>
+                    <p>качество: {{ book.quality }}</p>
+                    <p>размер: {{ book.size }}</p>
+                </div>
+                {% show_ratings_preview book_ids=book.id %}
+                <!-- Кнопка для перехода на страницу audiobook_detail.html -->
+                <a href="{% url 'audiobook' book.slug %}">
+                    <button class="button_preview"><span>Подробнее </span></button>
+                </a>
+            </article>
+            <hr>
+            {% endfor %}
+        </main>
+    </section>
+
+    <div class="paginate">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% if query %}&q={{ query }}{% endif %}">&lang;&lang; ...</a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">&lang;</a>
+                {% endif %}
+
+                <span class="current">
+                        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">&rang;</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}">... &rang;&rang;</a>
+                {% endif %}
+                </span>
+    </div>
+</div>
 {% endblock content %}
+
+
 

@@ -22,11 +22,10 @@
         height: 36px;
         width: 120px;
         font-size: 16px;
-        border-radius: 6px;
 }
 
 .button_active{
         color: #FFF;
-        background: -webkit-gradient(linear, left top, left bottom, from(#97461a), to(#5d2211));
-        /*  transition: background 10.0s ease; /* плавное изменение цвета фона при активации и деактивации класса */
+      /*    background: -webkit-gradient(linear, left top, left bottom, from(#97461a), to(#5d2211));
+        transition: background 10.0s ease; /* плавное изменение цвета фона при активации и деактивации класса */
 }
