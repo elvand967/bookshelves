@@ -7,12 +7,7 @@
 {% load main_tags %}
 
 {% block head %}
-<!--Сюда добавим стили пользовательских тегов-->
-<link type="text/css" href="{% static 'audiobooks/css/audiobooks.css' %}" rel="stylesheet"/>
 <link type="text/css" href="{% static 'audiobooks/css/audiobook_detail.css' %}" rel="stylesheet"/>
-<link type="text/css" href="{% static 'audiobooks/css/menu_catsubcat.css' %}" rel="stylesheet"/>
-<link type="text/css" href="{% static 'audiobooks/css/ring_slider_books.css' %}" rel="stylesheet"/>
-<link type="text/css" href="{% static 'audiobooks/css/search_tag.css' %}" rel="stylesheet"/>
 {% endblock head %}
 
 {% block content %}
@@ -32,43 +27,57 @@
         <div class="slider_container">{% ring_slider_books %}</div>
 
         <div class="sort_container">
-            <h1>{{ audiobook.title }}</h1>
+
         </div>
 
-        <div class="bread_crumbs">
-        <h3>{{ audiobook.title }}</h3>
-        </div>
 
         <main class="main_container">
+            <div class="book">
+                <div class="bread_crumbs">
+                    <p>хлебные крошки</p>
+                </div>
+                <div class="book_header">
+                    <h1>{{ audiobook.title }}</h1>
+                </div>
+                <div class="book_info">
+                    <div>
+                    <img src="{{ audiobook.picture.url }}" alt="{{ audiobook.title }}">
+                    {% if audiobook.cycle %}
+                        <p>Цикл: {{ audiobook.cycle.name }} ({{ audiobook.number_in_cycle }})</p>
+                    {% endif %}
+                    <p>
+                        {% if audiobook.authors.count == 1 %}
+                        автор: {{ audiobook.authors.first }}
+                        {% else %}
+                        авторы: {{ audiobook.authors.all|join:", " }}
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if audiobook.readers.count == 1 %}
+                        читает: {{ audiobook.readers.first }}
+                        {% else %}
+                        читают: {{ audiobook.readers.all|join:", " }}
+                        {% endif %}
+                    </p>
+                    <p>длительность: {{ audiobook.duration }}</p>
+                    <p>качество: {{ audiobook.quality }}</p>
+                    <p>размер: {{ audiobook.size }}</p>
+                    <br>
+                    <p>{{ audiobook.description }}</p>
+                </div>
+                </div>
+                <div class="book_img">
 
-    <h2>Цикл: {{ audiobook.cycle.name }} ({{ audiobook.number_in_cycle }})</h2>
-    <div><img src="{{ audiobook.picture.url }}" alt="{{ audiobook.title }}" class="leftimg">
-        <p>
-            {% if audiobook.authors.count == 1 %}
-            автор: {{ audiobook.authors.first }}
-            {% else %}
-            авторы: {{ audiobook.authors.all|join:", " }}
-            {% endif %}
-        </p>
-        <p>
-            {% if audiobook.readers.count == 1 %}
-            читает: {{ audiobook.readers.first }}
-            {% else %}
-            читают: {{ audiobook.readers.all|join:", " }}
-            {% endif %}
-        </p>
-        <p>длительность: {{ audiobook.duration }}</p>
-        <p>качество: {{ audiobook.quality }}</p>
-        <p>размер: {{ audiobook.size }}</p>
-        <p>{{ audiobook.description }}</p>
-    </div>
-    <p>Рейтинг: {{ audiobook.average_rating }}</p>
-
-    <br>
-    <a href="{{ audiobook.torrent.url }}" download>
-        <button type="button">Скачать торрент-файл</button>
-    </a>
-
+                </div>
+                <div class="book_rating">
+                    <p>Рейтинг: {{ audiobook.average_rating }}</p>
+                </div>
+                <div class="book_download">
+                    <a href="{{ audiobook.torrent.url }}" download>
+                        <button type="button">Скачать торрент-файл</button>
+                    </a>
+                </div>
+            </div>
         </main>
     </section>
 

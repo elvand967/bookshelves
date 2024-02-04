@@ -1,0 +1,169 @@
+/* D:\Python\myProject\bookshelves\app\audiobooks\static\audiobooks\css\audiobooks_index.css */
+
+/* Общие стили шаблонов app audiobooks */
+@import url('audiobooks.css');
+
+/* Стили шаблона вертикального меню - menu_catsubcat.css */
+@import url('menu_catsubcat.css');
+
+/* Стили шаблона слайдера - ring_slider_books.css */
+@import url('ring_slider_books.css');
+
+/* Стили шаблона поиска - search_tag.html */
+@import url('search_tag.css');
+
+
+.bread_crumbs h1 {
+    display: flex;
+    justify-content: center;
+    /*font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1.1px;*/
+    font-size: 2.0em;
+    letter-spacing: 0.08125em; /* 1.3px */
+}
+
+/* vvv--- превью книг ---vvv */
+.preview_book {
+    margin: 10px 0;
+}
+
+.preview_book {
+    display: grid;
+    /* Будет создано 3 колонки */
+    grid-template-columns: 124px 1fr 140px;
+    /* Будет создано 3 ряда */
+    grid-template-rows: repeat(3, auto);
+    /* Отступы между рядами */
+    row-gap: 10px;
+    /* Отступы между колонками */
+    column-gap: 15px;
+    box-sizing: border-box;
+    grid-template-areas:
+        "h h h"
+        "d d i"
+        "r r b";
+}
+
+.header_preview {
+    grid-area: h;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    min-height: 30px;
+    color: #FFF;
+    background: var(--color_grad30);
+}
+
+.header_preview h2{
+    font-size: 1.3em;
+    letter-spacing: 0.08125em; /* 1.3px */
+    margin: 5px;
+}
+
+.header_preview h3 {
+    font-size: 1.0em;
+    margin: 5px;
+}
+
+.description_preview {
+    grid-area: d;
+    text-align: justify;
+}
+
+.description_preview img{
+    float: left;
+    max-width: 124px;
+    max-height: 220px;
+    margin: 5px 10px 5px 0;
+}
+
+.information_preview {
+    grid-area: i;
+}
+
+.ratings_preview {
+    grid-area: r;
+}
+
+.button_preview {
+    grid-area: b;
+    height: 60px;
+}
+
+
+
+
+/* файл стилей меню сортировки рейтингов */
+
+.sort-menu{
+    z-index: 30;
+}
+
+.sort-menu ul {
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0 auto; /*убираем отступы*/
+  padding-left: 0; /*убираем отступы*/
+  margin-top:5px; /*делаем отступ сверху*/
+}
+
+.active_label{
+  background-color: var(--color04);/*добавляем эффект при наведении*/
+  color: #FFF;
+}
+
+.sort-menu a {
+  text-decoration: none; /*убираем подчеркивание текста ссылок*/
+  /*background:#819A32; добавляем фон к пункту меню*/
+  color:var(--color05); /*меняем цвет ссылок*/
+ /* padding:0; добавляем отступ*/
+  font-family: arial; /*меняем шрифт*/
+  line-height:30px; /*ровняем меню по вертикали*/
+  display: block;
+
+  -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+  -o-transition: all 0.3s 0.01s ease;
+  -webkit-transition: all 0.3s 0.01s ease;
+}
+.sort-menu a:hover {     /*добавляем эффект при наведении*/
+
+  color: #FFF;
+}
+.sort-menu li {
+  float:left; /*Размещаем список горизонтально для реализации меню*/
+  position:relative; /*задаем позицию для позиционирования*/
+  padding: 0 10px;
+}
+
+.sort-menu li:hover {
+  background-color: var(--color04);/*добавляем эффект при наведении*/
+  color: #FFF;
+}
+
+    /*Стили для скрытого выпадающего меню*/
+    .sort-menu li > ul {
+        position:absolute;
+        top:25px;
+        display:none;
+    }
+
+    /*Делаем скрытую часть видимой*/
+    .sort-menu li:hover > ul {
+        display:block;
+        width: 160px;  /* Задаем ширину выпадающего меню*/
+        margin: 0;
+        background-color: var(--color04);
+        z-index: 30;
+    }
+    .sort-menu li:hover > ul > li {
+        float:none; /*Убираем горизонтальное позиционирование*/
+    }
+
+
+
+
+
+
+
+
