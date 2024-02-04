@@ -4,14 +4,12 @@
 from django.shortcuts import get_object_or_404
 from django import template
 from django.urls import reverse
-from ..models import ModelCategories, ModelSubcategories, ModelBooks
+from ..models import ModelCategories, ModelSubcategories, ModelBooks, AverageRating
 
 register = template.Library()
 
 
 """Встраиваемый пользовательский тег вертикального меню категорий/подкатегориый"""
-
-
 @register.inclusion_tag(
     "audiobooks/templatetags/menu_catsubcat.html", name="my_menu_catsubcat"
 )
@@ -57,8 +55,6 @@ def menu_catsubcat(cat_sel=None, subcat_sel=None):
 
 
 """Встраиваемый пользовательский тег слайдера-кольца"""
-
-
 @register.inclusion_tag(
     "audiobooks/templatetags/ring_slider_books.html", name="ring_slider_books"
 )
@@ -70,16 +66,12 @@ def book_slider():
 
 
 """Встраиваемый пользовательский тег пагинатора"""
-
-
 @register.inclusion_tag("audiobooks/templatetags/pagination.html", name="pagination")
 def custom_pagination(page_obj):
     return {"page_obj": page_obj}
 
 
 """Встраиваемый пользовательский тег блока поиска"""
-
-
 @register.inclusion_tag("audiobooks/templatetags/search_tag.html")
 def search_tag():
     # data = [
@@ -114,8 +106,6 @@ def search_tag():
 
 
 """ Заголовок страницы Категория/Подкатегория/уведомление о поиске"""
-
-
 @register.simple_tag
 def breadcrumbs(
     cat_sel=None, subcat_sel=None, search_q=None, search_results_count=None
@@ -141,3 +131,23 @@ def breadcrumbs(
             return f'Книжный шкаф "{category.name}"'
 
     return "Все жанры"  # или любой другой дефолтный текст
+
+
+@register.inclusion_tag('audiobooks/templatetags/ratings_preview.html')
+def show_ratings_preview(book_ids):
+    try:
+        rating_preview = AverageRating.objects.get(book_id=book_ids)
+    except AverageRating.DoesNotExist:
+        rating_preview = None
+
+    plot_ind = float(rating_preview.plot) * 10 if rating_preview else 0
+    talent_ind = float(rating_preview.talent) * 10 if rating_preview else 0
+    voice_ind = float(rating_preview.voice) * 10 if rating_preview else 0
+
+    ratings = {
+        'rating_preview': rating_preview,
+        'plot_ind': plot_ind,
+        'talent_ind': talent_ind,
+        'voice_ind': voice_ind,
+    }
+    return ratings

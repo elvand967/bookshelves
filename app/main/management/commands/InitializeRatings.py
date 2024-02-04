@@ -10,8 +10,8 @@ from django.core.management.base import BaseCommand
 from django.db.models import Q
 import random
 
-from audiobooks.models import ModelBooks
-from rating.models import AverageRating
+from audiobooks.models import ModelBooks, AverageRating
+
 
 class Command(BaseCommand):
     help = 'Инициализируйте данные AverageRating из существующих данных ModelBooks.' \

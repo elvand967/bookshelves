@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     'main.apps.MainConfig',
     'audiobooks.apps.AudiobooksConfig',
-    'rating.apps.RatingConfig',
+    # 'rating.apps.RatingConfig',
 ]
 
 MIDDLEWARE = [

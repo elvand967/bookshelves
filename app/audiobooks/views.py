@@ -4,9 +4,9 @@ from django.views import View
 from django.views.generic import ListView
 from django.db.models import Q
 
-
+from audiobooks.mixins import SortingMixin
 from audiobooks.models import ModelBooks, ModelSubcategories, ModelCategories
-from rating.mixins import SortingMixin
+
 
 """Превью книг по категориям/подкатегориям + сортировка по критериям"""
 
@@ -86,8 +86,6 @@ class BookListView(SortingMixin, ListView):
 
 
 """Поиск книг по полям: Название; Цикл; Автор; Чтец + общий поиск"""
-
-
 class SearchResultsView(ListView):
     model = ModelBooks
     template_name = "audiobooks/index.html"

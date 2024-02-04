@@ -12,6 +12,9 @@
 /* Стили шаблона поиска - search_tag.html */
 @import url('search_tag.css');
 
+/* Стили шаблона ratings_preview.css */
+@import url('ratings_preview.css');
+
 
 .bread_crumbs h1 {
     display: flex;
