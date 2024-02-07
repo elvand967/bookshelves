@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load main_tags %}
+{% load users_tags %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -11,10 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title|default:"Аудиокниги-скачать торрентом" }}</title>
     <link type="text/css" href="{% static 'deps/css/base.css' %}" rel="stylesheet"/>
-    {% block head %}{% endblock head %}
     <link type="text/css" href="{% static 'deps/css/style_iconsfont.css' %}" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'deps/images/main.ico' %}" type="image/x-icon"/>
+    {% block head %}{% endblock head %}
     <meta name="description" content="Описание вашего сайта">
     <meta name="keywords" content="ключевые, слова, вашего, сайта">
     <style>
@@ -66,9 +67,9 @@
                 </nav>
             </div>
         </header>
-
-        {% block content %}{% endblock content %}
-
+        <div class="content"
+            {% block content %}{% endblock content %}
+        </div>
         <div class="buttons_scroll">
             <button id="button_scroll_down"><i class="icon-circle-chevron-down"></i></button>
             <button id="button_scroll_up"><i class="icon-circle-chevron-up"></i></button>

@@ -130,9 +130,9 @@
   -webkit-transition: all 0.3s 0.01s ease;
 }
 .sort-menu a:hover {     /*добавляем эффект при наведении*/
-
   color: #FFF;
 }
+
 .sort-menu li {
   float:left; /*Размещаем список горизонтально для реализации меню*/
   position:relative; /*задаем позицию для позиционирования*/

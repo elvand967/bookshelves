@@ -12,9 +12,4 @@ urlpatterns = [
     path('fag/', views.fag, name='fag'),        # http://127.0.0.1:8000/fag/
     path('feedback/', views.feedback, name='feedback'),  # http://127.0.0.1:8000/feedback/
     path('chat/', views.chat, name='chat'),     # http://127.0.0.1:8000/chat/
-
-    path('login/', views.login, name='login'),
-    path('register/', views.registeruser, name='register'),
-    path('profile/', views.profile, name='profile'),
-    path('logout/', views.logout, name='logout'),
 ]

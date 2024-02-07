@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('audiobooks.urls')),
     path('main/', include('main.urls')),
+    path('users/', include('users.urls')),
 ]
 
 def page_not_found(request, exception):

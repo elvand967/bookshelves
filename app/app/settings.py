@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     'main.apps.MainConfig',
     'audiobooks.apps.AudiobooksConfig',
-    # 'rating.apps.RatingConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +139,6 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Выход пользователя с переадресацией на корневую страницу
+LOGOUT_REDIRECT_URL = '/'

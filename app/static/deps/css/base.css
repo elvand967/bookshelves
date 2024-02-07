@@ -49,6 +49,8 @@ table {
 :root {
   --color_fff: #fff;
   --color01: #b47d48;
+  --color01_1: #DAA778;
+  --color01_2: #DAB592;
   --color02: #5e210f;
   --color03: #4e4131;
   --color04: #723527;
@@ -171,6 +173,10 @@ body {
   z-index: 1000;
 }
 */
+
+.content {
+  background: var(--color05);
+}
 
 .context {
   min-height: 100%;

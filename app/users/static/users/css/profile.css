@@ -1,0 +1,53 @@
+/* D:\Python\myProject\bookshelves\app\users\static\users\css\profile.css */
+
+.profile{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: max-content;
+    justify-content: center; /* Выравниваем по центру */
+    margin: 0 auto;
+    padding: 15px;
+    min-height: 400px;
+    background: var(--color05);
+}
+
+/* Стили для формы регистрации */
+.profile-form {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: max-content minmax(200px, 300px); /* label и input в каждой строке */
+    align-self: center; /* Выравниваем метку по центру */
+    margin-bottom: 3em;
+    padding: 30px 25px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px 9px #5e210f;
+}
+
+/* Стили для меток (label) */
+.profile-form label {
+    align-self: center; /* Выравниваем метку по центру */
+}
+
+/* Стили для полей ввода */
+.profile-form input {
+    align-self: center; /* Выравниваем input */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Стили для кнопки отправки формы */
+.profile-form button {
+    grid-column: span 2; /* Занимает обе колонки */
+    justify-items: end;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: max-content;
+}
+
+/* Стили для разделителя формы */
+.profile-form .delimiter {
+    grid-column: span 2; /* Занимает обе колонки */
+}
