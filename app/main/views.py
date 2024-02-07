@@ -25,7 +25,13 @@ def fag(request):
 
 
 def feedback(request):
-    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = ContactForm()
+
     data = {
         'title': 'Обратная связь',
         'form': form,
