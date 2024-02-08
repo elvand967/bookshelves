@@ -1,7 +1,6 @@
 # D:\Python\myProject\bookshelves\app\main\urls.py
 
 from django.urls import path
-
 from . import views
 
 

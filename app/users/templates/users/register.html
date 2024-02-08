@@ -1,6 +1,6 @@
 <!-- D:\Python\myProject\bookshelves\app\users\templates\users\register.html -->
 
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 {% load static %}
 
 {% block head %}
@@ -8,7 +8,7 @@
 {% endblock head %}
 
 {% block content %}
-<div></div>
+<i></i>
 <form class="registration" method="post" action="{% url 'register' %}">
     <h2>Регистрация нового пользователя</h2>
     {% csrf_token %}
@@ -24,5 +24,4 @@
         Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
     </div>
 </form>
-
 {% endblock %}

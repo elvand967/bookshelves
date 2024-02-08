@@ -1,4 +1,4 @@
-<!-- D:\Python\myProject\bookshelves\app\templates\base.html -->
+<!-- D:\Python\myProject\bookshelves\app\main\templates\main\base.html -->
 
 {% load static %}
 {% load main_tags %}
@@ -11,17 +11,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title|default:"Аудиокниги-скачать торрентом" }}</title>
-    <link type="text/css" href="{% static 'deps/css/base.css' %}" rel="stylesheet"/>
-    <link type="text/css" href="{% static 'deps/css/style_iconsfont.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/base.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'main/css/style_iconsfont.css' %}" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
-    <link rel="shortcut icon" href="{% static 'deps/images/main.ico' %}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{% static 'main/images/main.ico' %}" type="image/x-icon"/>
     {% block head %}{% endblock head %}
     <meta name="description" content="Описание вашего сайта">
     <meta name="keywords" content="ключевые, слова, вашего, сайта">
     <style>
         .wrapper {
-            background: #d9c2a1 url("{% static 'deps/images/body_fon.jpg' %}") center center/cover no-repeat fixed;
+            background: #d9c2a1 url("{% static 'main/images/body_fon.jpg' %}") center center/cover no-repeat fixed;
         }
+
 
 
     </style>
@@ -34,7 +35,7 @@
             <div class="logo  tooltip">
                 <a href="/" id="top">
                     <span class="tooltiptext tooltip-bottom">Главная страница</span>
-                    <img class="main-logo" src="{% static 'deps/images/logo.png' %}">
+                    <img class="main-logo" src="{% static 'main/images/logo.png' %}">
                 </a>
             </div>
             <div class="nav_nav">
@@ -67,7 +68,7 @@
                 </nav>
             </div>
         </header>
-        <div class="content"
+        <div class="content">
             {% block content %}{% endblock content %}
         </div>
         <div class="buttons_scroll">
@@ -102,7 +103,7 @@
         </footer>
     </div>
 </div>
-<script src="{% static 'deps/js/base.js' %}"></script>
+<script src="{% static 'main/js/base.js' %}"></script>
 {% block js %}{% endblock js %}
 </body>
 

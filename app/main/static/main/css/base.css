@@ -1,4 +1,4 @@
-/* D:\Python\myProject\bookshelves\app\static\deps\css\base.css */
+/* D:\Python\myProject\bookshelves\app\main\static\main\css\base.css */
 
 /* Reset styles */
 html,body,div,span,applet,object,iframe,
@@ -187,7 +187,7 @@ footer {
   width: 100%;
   padding: 10px;
   color: var(--color05);
-  background-color: var(--color02);
+  background: var(--color_grad30);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;

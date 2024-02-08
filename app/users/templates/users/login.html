@@ -1,6 +1,6 @@
 <!-- D:\Python\myProject\bookshelves\app\users\templates\users\login.html -->
 
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 {% load static %}
 
 {% block head %}
@@ -8,7 +8,7 @@
 {% endblock head %}
 
 {% block content %}
-<div></div>
+<i></i>
 <form class="login" method="post" action="{% url 'login' %}">
     <h2>Вход на сайт</h2>
     {% csrf_token %}
