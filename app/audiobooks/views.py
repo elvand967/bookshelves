@@ -8,9 +8,15 @@ from audiobooks.mixins import SortingMixin
 from audiobooks.models import ModelBooks, ModelSubcategories, ModelCategories
 
 
+def test(request):
+    data = {
+        'title': 'test',
+        'text': 'Тестова страница сайта',
+    }
+    return render(request, 'audiobooks/test.html', context=data)
+
+
 """Превью книг по категориям/подкатегориям + сортировка по критериям"""
-
-
 class BookListView(SortingMixin, ListView):
     model = ModelBooks
     template_name = "audiobooks/index.html"

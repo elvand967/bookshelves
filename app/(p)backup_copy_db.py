@@ -16,8 +16,8 @@ def main():
 
 def database_backup():
     # Директория для хранения резервных копий
-    # path_backup_folder = os.path.join('..', '..', '..', 'folder_files', 'backup_folder')
-    path_backup_folder = os.path.join('folder_files', 'backup_folder')
+    # path_backup_folder = os.path.join('..', '..', '..', 'media', 'backup_folder')
+    path_backup_folder = os.path.join('media', 'backup_folder')
 
     if not os.path.exists(path_backup_folder):
         os.makedirs(path_backup_folder)  # Создаем директорию, если она не существует
